@@ -19,7 +19,6 @@ window.addEventListener('DOMContentLoaded', () => {
           if(getValueInput.state.submit){
                sendForm.sendForm();
           }
-          
      }
 
      changeScheme.chageScheme();
