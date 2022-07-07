@@ -1,0 +1,156 @@
+body{
+     color: #000;
+     padding: 0;
+     margin: 0;
+     min-width: 370px;
+     background-color: rgba(128, 128, 128, 0.355);
+   
+}
+h1,
+h2,
+h3,
+h4,
+p{
+     margin: 0;
+     padding: 0;
+}
+a{
+     text-decoration: none;
+     padding: 0;
+}
+ul{
+     list-style: none;
+     padding: 0;
+}
+*,
+*::before,
+::after{
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+     box-sizing: border-box;
+}
+
+.loginPage{
+     margin: 40px auto;
+     display: grid;
+     gap: 10px;
+     grid-template-columns: repeat(3, 1fr);
+     
+     
+    
+}
+.loginPage__form{
+     align-self: center;
+     background-color: rgba(167, 167, 167, 0.3);
+     border: 1px solid #000;
+     border-radius: 10px;
+     padding: 30px 10px;
+     box-shadow: 0 0 10px 20px rgba(9, 255, 9, 0.139);
+}
+
+.loginPage__form--body{
+     
+     margin: 10px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+h2{
+     text-align: center;
+     text-shadow: 5px 3px 3px rgb(103, 172, 0);
+     font-family: 'Arima', cursive;
+     font-size: 30px;
+     color: #000;
+     
+}
+
+
+
+.loginPage__form--item{
+     display: flex;
+     flex-direction: column;
+     padding: 10px 5px 30px ;
+     background-color: rgb(155, 154, 158);
+     border-radius: 5px;
+     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.58);
+     margin-bottom: 10px;
+
+}
+.loginPage__form--lable{
+     margin: 5px;
+}
+
+span{
+     color: red;
+     text-align: center;
+     height: 30px;
+}
+
+.loginPage__form--input{
+   margin: 5px;
+   height: 30px;
+   box-shadow: 2px 0 40px 5px lawngreen;
+     
+}
+
+.loginPage__form--btn{
+     margin-top: 10px;
+     display: flex;
+     justify-content: center;
+     
+}
+
+.loginPage__form--btn{
+     padding: 5px 70px;
+     border-radius: 10px;
+     cursor: pointer;
+    
+     
+}
+.loginPage__form--link{
+     text-align: end;
+     margin: 10px;
+}
+
+a{
+     color: blue;
+     font-size: 14px;
+     font-family: 'Arima', cursive;
+     
+}
+
+a:hover{
+     color: red;
+     transition: 0.1s linear;
+}
+
+a:active{
+     text-shadow: 0 0 2px #000;
+}
+
+.error{
+     box-shadow: 0 0 5px 2px red;
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+     body  { 
+          background:  #000; 
+          color: #000; 
+     }
+     h2{
+          color: #fff;
+          text-decoration: double;
+     }
+     .loginPage__form{
+          box-shadow: 0 0 10px 20px rgb(9, 255, 9);
+     }
+   }
+
+
+
+
+
