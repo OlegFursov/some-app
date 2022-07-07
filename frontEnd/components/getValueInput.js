@@ -1,9 +1,9 @@
 import ValidationForm from "./validationForm.js";
 
 export default class GetValueInput{
-     constructor(){
+     constructor(...argument){
           this.validationForm = new ValidationForm(this.state);
-       
+          [this.inputLogin, this.inputPass, this.message] = argument;
      }
 
      state ={
@@ -13,12 +13,10 @@ export default class GetValueInput{
      }
 
      getValue (){
-          const inputLogin = document.getElementById('forLogin');
-          const inputPass = document.getElementById('forPass');
-          this.state.valueLogin = inputLogin.value;
-          this.state.valuePass= inputPass.value;
-          this.validationForm.checkForm();
-          this.state.submit = this.validationForm.allowSubmit();  
+          this.state.valueLogin = this.inputLogin.value;
+          this.state.valuePass= this.inputPass.value;
+          this.validationForm.checkForm(this.inputLogin, this.inputPass, this.message);
+          this.state.submit = this.validationForm.allowSubmit(this.inputLogin, this.inputPass);  
      }
 
 

@@ -1,29 +1,30 @@
 export default class ValidationForm {
-     constructor(state){
-          this.state = state;
-        
-     }
-
-     checkForm(){
-        if(this.state.valueLogin ===''){
-          document.getElementById('forLogin').classList.add('error');
-          document.getElementsByClassName('loginPage__form--message')[0].innerText = 'Please fill both field';
-        }else {
-          document.getElementById('forLogin').classList.remove('error');
-          document.getElementsByClassName('loginPage__form--message')[0].innerText = ''
-        }
-        if( this.state.valuePass ==='' || this.state.valuePass < 8){
-          document.getElementById('forPass').classList.add('error');
-          document.getElementsByClassName('loginPage__form--message')[0].innerText = 'Please fill both field';
-        }else {
-          document.getElementById('forPass').classList.remove('error');
-          document.getElementsByClassName('loginPage__form--message')[0].innerText = ''
-        }
-     }
+  constructor(state){
+       this.state = state;
      
-     allowSubmit(){
-          return document.getElementById('forPass').className.slice(-5) === 'error' || 
-                     document.getElementById('forLogin').className.slice(-5) === 'error' ? 
-                         false : true;
+  }
+
+  checkForm(...argument){
+   const [inputLogin, inputPass, message] = argument;
+     if(this.state.valueLogin ===''){
+       inputLogin.classList.add('error');
+       message.innerText = 'Please fill both field';
+     }else {
+       inputLogin.classList.remove('error');
+       message.innerText = ''
      }
+     if( this.state.valuePass ==='' || this.state.valuePass < 8){
+       inputPass.classList.add('error');
+       message.innerText = 'Please fill both fields';
+     }else {
+       inputPass.classList.remove('error');
+       message.innerText = ''
+     }
+  }
+  
+  allowSubmit(inputLogin, inputPass){
+       return inputPass.className.slice(-5) === 'error' || 
+                 inputLogin.className.slice(-5) === 'error' ? 
+                      false : true;
+  }
 }
