@@ -1,30 +1,35 @@
-import GetValueInput from './components/getValueInput.js';
-import SendForm from './components/sendForm.js';
-import ChangeScheme from './components/changeScheme.js';
+import { parseRequestURL}  from './helper/helper.js';
+import { changeScheme } from './config/changeScheme.js';
+import RegisrForm from './components/registrationPage/RegistrForm.js';
+import LoginRender from './components/loginPage/LoginRender.js';
+import Error from './components/error/Error.js'
 
 window.addEventListener('DOMContentLoaded', () => {
-     //!const
-     const inputLogin = document.getElementById('forLogin');
-     const inputPass = document.getElementById('forPass');
-     const message = document.getElementsByClassName('loginPage__form--message')[0];
-     const getValueInput = new GetValueInput(inputLogin, inputPass, message);
-     const sendForm = new SendForm(getValueInput.state);
-     const changeScheme = new ChangeScheme();
-     
-     //! EventListener
-     document.getElementById('btn').addEventListener('click', checkUser);
+     //* const
+     const root = document.getElementById('root');
+    
 
-     //!Main functions
-     function checkUser(e){
-          e.preventDefault();
-          getValueInput.getValue();
+     //*routes
+     const Routes ={
+          '': LoginRender,
+          'regForm': RegisrForm,
 
-          if(getValueInput.state.submit){
-               sendForm.sendForm(inputLogin, inputPass);
-          }
-          
      }
 
-     changeScheme.chageScheme();
+     function router(){
+          const parseURL = `${parseRequestURL().resorse || ''}`;
+          const page = Routes[parseURL] ? new Routes[parseURL] : new Error();
+          page.render().then(html => {
+               root.innerHTML = html;
+               page.afterRender();  
+          })
+
+     }
+     
+    
+     router()
+     changeScheme();
+     window.addEventListener('hashchange', router)
+    
      
 })

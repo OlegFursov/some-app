@@ -1,3 +1,21 @@
+:root {
+     /** var color */
+     --color-link-forgot-password: rgb(5, 5, 235);
+     --color-link-hover: red;
+     --color-link-greate-account: #000;
+     --color-background-registration: linear-gradient(to left, rgb(0, 0, 0) 5% , rgb(31, 29, 29)30%, rgb(56, 55, 55) );;
+     --color-text-registration: #fff;
+     --color-necessary-text: red;
+     --color-border-reg-block: #000;
+     --color-btn-cteate: rgba(141, 251, 141, 0.5);
+     --color-btn-cancel: rgba(255, 69, 69, 0.544);
+     /** var font-size */
+
+     /** var time */
+
+}
+
+
 body{
      color: #000;
      padding: 0;
@@ -31,7 +49,7 @@ ul{
      box-sizing: border-box;
 }
 
-.loginPage{
+.login-page{
      margin: 40px auto;
      display: grid;
      gap: 10px;
@@ -40,7 +58,7 @@ ul{
      
     
 }
-.loginPage__form{
+.login-page__form{
      align-self: center;
      background-color: rgba(167, 167, 167, 0.3);
      border: 1px solid #000;
@@ -49,7 +67,7 @@ ul{
      box-shadow: 0 0 10px 20px rgba(9, 255, 9, 0.139);
 }
 
-.loginPage__form--body{
+.login-page__form--body{
      
      margin: 10px;
      display: flex;
@@ -68,7 +86,7 @@ h2{
 
 
 
-.loginPage__form--item{
+.login-page__form--item{
      display: flex;
      flex-direction: column;
      padding: 10px 5px 30px ;
@@ -78,7 +96,7 @@ h2{
      margin-bottom: 10px;
 
 }
-.loginPage__form--lable{
+.login-page__form--lable{
      margin: 5px;
 }
 
@@ -88,41 +106,41 @@ span{
      height: 30px;
 }
 
-.loginPage__form--input{
+.login-page__form--input{
    margin: 5px;
    height: 30px;
    box-shadow: 2px 0 40px 5px lawngreen;
      
 }
 
-.loginPage__form--btn{
+.login-page__form--btn{
      margin-top: 10px;
      display: flex;
      justify-content: center;
      
 }
 
-.loginPage__form--btn{
+.login-page__form--btn{
      padding: 5px 70px;
      border-radius: 10px;
      cursor: pointer;
     
      
 }
-.loginPage__form--link{
+.login-page__form--link{
      text-align: end;
      margin: 10px;
 }
 
 a{
-     color: blue;
+     color: var(--color-link-forgot-password);
      font-size: 14px;
      font-family: 'Arima', cursive;
      
 }
 
 a:hover{
-     color: red;
+     color: var(--color-link-hover);
      transition: 0.1s linear;
 }
 
@@ -134,6 +152,160 @@ a:active{
      box-shadow: 0 0 5px 2px red;
 }
 
+.login-registration__link{
+     text-align: center;
+   
+}
+.login-registration__link a{
+    font-size: 22px;
+    font-family: serif;
+ 
+
+    
+}
+
+.registration{
+     max-width: 900px;
+     margin: 10px auto;
+     background: var(--color-background-registration);
+     box-shadow: 5px 0 40px 10px var(--color-link-greate-account);
+     border-radius: 20px;
+}
+
+.registration-form{
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+.registration-form > h2 {
+     margin: 30px 0;
+     color: var(--color-text-registration);
+     text-shadow: 0px 10px 20px var(--color-text-registration);
+     font-family: 'Courier New', Courier, monospace;
+}
+input{
+     border-radius: 5px;
+}
+
+figure{
+     margin: 0 auto;
+     display: flex;
+     justify-content: center;
+     gap: 40px;
+     border: 1px solid black;
+     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+     border-radius: 10px;
+     padding: 15px 15px; 
+}
+.registration-img{
+     max-width: 200px;
+     max-height: 200px;
+     border-radius: 50%;
+     overflow: hidden;
+}
+figcaption{
+     text-align: center;
+     margin: auto 0;
+     color: var(--color-text-registration);
+     font-size: 24px;
+     font-family:'Courier New', Courier, monospace;
+}
+
+.registration-block--name{
+     margin: 50px auto 10px;
+     display: flex;
+     gap: 20px;
+     padding: 15px 15px;
+     border: 1px solid var(--color-border-reg-block);
+     border-radius: 10px;
+     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+}
+.registration-block-item {
+     color: var(--color-text-registration);
+     font-size: 15px;
+     font-family:'Courier New', Courier, monospace;
+     
+}
+mark{
+     background: inherit;
+     color: var(--color-necessary-text);
+}
+
+.registration-block-gender{
+     margin: 0 auto;
+     display: flex;
+     gap: 30px;
+}
+select{
+     border-radius: 5px;
+     box-shadow: 0px 0 3px 3px var(--color-text-registration);
+    
+}
+
+
+.registration-block--auth{
+     margin: 0 45px;
+     display: flex;
+     gap: 10px;
+     justify-content: center;
+     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+     border-radius: 10px;
+     padding: 15px 15px;
+     
+}
+
+#email{
+     max-width: 400px;
+     width: 100%;
+}
+
+.registration-block-pass{
+     margin: 20px 45px;
+     padding: 15px 15px;
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     flex-direction: column;
+     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+     border-radius: 10px;
+    
+}
+#pass1,
+#pass2 {
+     max-width: 300px;
+     width: 100%;
+}
+
+.registration-block-btn{
+    margin: 0px auto 40px;
+    display: flex;
+    gap: 20px;
+}
+
+#btnCreate,
+#btnCancel{
+     padding: 10px 45px;
+     border-radius: 10px ;
+     font-size: 18px;
+     font-family:'Courier New', Courier, monospace;
+     background-color: var(--color-btn-cteate);
+     color: var(--color-text-registration)
+}
+#btnCancel{
+     background-color: var(--color-btn-cancel);
+}
+
+.page-error{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.page-error-message{
+     font-size: 50px;
+}
+
+
+
 
 
 @media (prefers-color-scheme: dark) {
@@ -142,11 +314,23 @@ a:active{
           color: #000; 
      }
      h2{
-          color: #fff;
+          color: var(--color-text-registration);
           text-decoration: double;
      }
-     .loginPage__form{
+     .login-page__form{
           box-shadow: 0 0 10px 20px rgb(9, 255, 9);
+     }
+     /* .registration{
+          box-shadow: 5px 0 40px 10px var(--color-text-registration);
+
+     } */
+     :root{
+          --color-background-registration: #000;
+          --color-link-greate-account: #fff
+     }
+     a{
+          color: var(--color-text-registration);
+          text-shadow: 0px  5px 6px rgb(9, 255, 9);
      }
    }
 
