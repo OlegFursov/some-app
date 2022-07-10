@@ -11,6 +11,7 @@ export default class Error404{
                `)
           })
      }
+     afterRender(){}
      
 
 }

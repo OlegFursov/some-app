@@ -50,14 +50,38 @@ ul{
 }
 
 .login-page{
-     margin: 40px auto;
+     margin: 70px auto;
      display: grid;
      gap: 10px;
-     grid-template-columns: repeat(3, 1fr);
+     grid-template-columns: 1fr 500px 1fr  
      
-     
-    
 }
+/* 
+.login-page{
+     max-width: 500px;
+     margin: 0px auto;
+     float: left;
+     top: 0;
+     right: 0;
+     transform:  translate3d(120%, 30% ,0);
+} */
+
+/* .login-page{
+     max-width: 500px;
+     margin: 70px auto;
+     display: block;
+} */
+
+/* .login-page{
+     margin: 50px auto;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
+     gap: 40px;
+} */
+
+
 .login-page__form{
      align-self: center;
      background-color: rgba(167, 167, 167, 0.3);
@@ -188,9 +212,11 @@ input{
 }
 
 figure{
+     min-width: 600px;
      margin: 0 auto;
      display: flex;
-     justify-content: center;
+     /* flex-direction: column; */
+     /* justify-content: space-between; */
      gap: 40px;
      border: 1px solid black;
      box-shadow: 0px 0 5px 6px var(--color-text-registration);
@@ -202,7 +228,17 @@ figure{
      max-height: 200px;
      border-radius: 50%;
      overflow: hidden;
+     border: 1px solid var(--color-text-registration);
 }
+
+.registration-img-block__name{
+     max-width: 800px;
+     /* width: 100%; */
+     display: flex;
+     flex-direction: column;
+     gap: 30px;
+}
+
 figcaption{
      text-align: center;
      margin: auto 0;
@@ -212,6 +248,7 @@ figcaption{
 }
 
 .registration-block--name{
+     max-width: 800px;
      margin: 50px auto 10px;
      display: flex;
      gap: 20px;
@@ -221,6 +258,7 @@ figcaption{
      box-shadow: 0px 0 5px 6px var(--color-text-registration);
 }
 .registration-block-item {
+     max-width: 800px;
      color: var(--color-text-registration);
      font-size: 15px;
      font-family:'Courier New', Courier, monospace;
@@ -232,6 +270,7 @@ mark{
 }
 
 .registration-block-gender{
+     max-width: 800px;
      margin: 0 auto;
      display: flex;
      gap: 30px;
@@ -244,6 +283,7 @@ select{
 
 
 .registration-block--auth{
+     max-width: 800px;
      margin: 0 45px;
      display: flex;
      gap: 10px;
@@ -257,9 +297,11 @@ select{
 #email{
      max-width: 400px;
      width: 100%;
+     color: #000;
 }
 
 .registration-block-pass{
+     max-width: 800px;
      margin: 20px 45px;
      padding: 15px 15px;
      display: flex;
@@ -277,6 +319,7 @@ select{
 }
 
 .registration-block-btn{
+     max-width: 800px;
     margin: 0px auto 40px;
     display: flex;
     gap: 20px;
@@ -304,6 +347,11 @@ select{
      font-size: 50px;
 }
 
+.hello,
+.next{
+     color:var(--color-text-registration);
+}
+
 
 
 
@@ -320,10 +368,7 @@ select{
      .login-page__form{
           box-shadow: 0 0 10px 20px rgb(9, 255, 9);
      }
-     /* .registration{
-          box-shadow: 5px 0 40px 10px var(--color-text-registration);
-
-     } */
+     
      :root{
           --color-background-registration: #000;
           --color-link-greate-account: #fff

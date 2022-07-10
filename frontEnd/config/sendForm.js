@@ -1,12 +1,18 @@
-   export const sendFormLoginPage = (inputLogin, inputPass,state) => {
-          console.log(state);
-               //!fetch
-          inputLogin.value = '';
-          inputPass.value ='';
-          state.valueLogin = '';
-          state.valuePass = '';
-          state.submit = false;
-     
+export const sendFormLoginPage = (stateLogin, allowSubmitLoginPage, defaultPage, checkUserLogin,  USERS, checkUSers) => {
+     allowSubmitLoginPage(stateLogin);
+     if(stateLogin.submit){
+          checkUserLogin(stateLogin, USERS, checkUSers);
+          defaultPage.defaulLoginForm(stateLogin);
      }
+}
+
+export const sendFormRegistrationPage = (stateRegistaration, defaultPage, USERS, checkUSers) => {
+     if(stateRegistaration.submit){
+          checkUSers.addUSersToServer(USERS, stateRegistaration);
+          location.hash ='#/nextPage'
+
+     defaultPage.defaultRegistrationForm(stateRegistaration)
+     }  
+}
 
 

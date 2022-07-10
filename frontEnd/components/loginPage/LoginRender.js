@@ -1,15 +1,13 @@
-import {sendFormLoginPage} from "../../config/sendForm.js";
-import { state } from "../../helper/constants.js";
+import { sendFormLoginPage } from "../../config/sendForm.js";
+import { stateLogin,  USERS } from "../../helper/constants.js";
 import { checkFormLoginPage } from '../../config/validationForm.js';
-import { allowSubmitLoginPage } from "../../config/validationForm.js";
-import { getValueLoginPage } from '../../config/getValueInput.js'
-import Utils from "../../helper/utils.js";
+import { allowSubmitLoginPage, checkUserLogin } from "../../config/validationForm.js";
+import { getValueLoginPage } from '../../config/getValueInput.js';
+import { defaultPage, validLoginPage, checkUSers} from '../../config/helpObj.js'
 
-
-
-export default class LoginRender extends Utils{
+export default class LoginRender{
      constructor(){
-          super()
+        
      }
      
      render(){
@@ -33,32 +31,29 @@ export default class LoginRender extends Utils{
                                         </div>
                                         <div class="login-page__form--link">
                                              <a href="#">Forgot password ?</a>
-                                   </div>
+                                        </div>
                                    </div>  
                               </form>
+                              <h1 class="login-registration__link"><a  href="#/regForm">Create account</a></h1> 
                          </div>
-                         <h1 class="login-registration__link"><a  href="#/regForm">Create account</a></h1> 
                     </section>`)
           })
      }
 
      afterRender(){
-          document.getElementById('btn').addEventListener('click', this.checkUser); 
+          document.getElementById('btn').addEventListener('click', this.handelCheck); 
      }
      
 
-     checkUser(e){
+     handelCheck(e){
           e.preventDefault();
           const inputLogin = document.getElementById('login');
           const inputPass = document.getElementById('pass');
           const message = document.getElementsByClassName('login-page__form--message')[0];
 
-          getValueLoginPage(state, inputLogin, inputPass);
-          checkFormLoginPage(inputLogin, inputPass, message, state);
-
-          if(allowSubmitLoginPage(inputLogin, inputPass,state)){
-               sendFormLoginPage(inputLogin, inputPass, state);
-          }   
+          getValueLoginPage(stateLogin, inputLogin, inputPass);
+          checkFormLoginPage(inputLogin, inputPass, message, stateLogin, validLoginPage);
+          sendFormLoginPage(stateLogin, allowSubmitLoginPage, defaultPage, checkUserLogin,  USERS, checkUSers);
      }
 
 
