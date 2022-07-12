@@ -1,6 +1,7 @@
+
 export const stateLogin = {
-     valueLogin: '',
-     valuePass: '',
+     login: '',
+     password: '',
      submit: false,
 } 
 
@@ -10,6 +11,8 @@ export const stateRegistration ={
      gender: 'With out.png',
      email: '',
      password:'',
+     phoneNumber:'',
+     city:'',
      submit: false,
      passValid: false,
 }

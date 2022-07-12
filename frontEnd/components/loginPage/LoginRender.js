@@ -1,12 +1,14 @@
 import { sendFormLoginPage } from "../../config/sendForm.js";
 import { stateLogin,  USERS } from "../../helper/constants.js";
-import { checkFormLoginPage } from '../../config/validationForm.js';
-import { allowSubmitLoginPage, checkUserLogin } from "../../config/validationForm.js";
+import { checkFormLoginPage } from '../../config/setValidationForm.js';
+import { allowSubmitPage, checkUserLogin } from "../../config/setValidationForm.js";
 import { getValueLoginPage } from '../../config/getValueInput.js';
-import { defaultPage, validLoginPage, checkUSers} from '../../config/helpObj.js'
+import { defaultPage, validPage, checkUSers} from '../../config/helpObj.js'
+
 
 export default class LoginRender{
      constructor(){
+        
         
      }
      
@@ -47,13 +49,22 @@ export default class LoginRender{
 
      handelCheck(e){
           e.preventDefault();
-          const inputLogin = document.getElementById('login');
-          const inputPass = document.getElementById('pass');
-          const message = document.getElementsByClassName('login-page__form--message')[0];
-
-          getValueLoginPage(stateLogin, inputLogin, inputPass);
-          checkFormLoginPage(inputLogin, inputPass, message, stateLogin, validLoginPage);
-          sendFormLoginPage(stateLogin, allowSubmitLoginPage, defaultPage, checkUserLogin,  USERS, checkUSers);
+          const props = {
+               login: document.getElementById('login'),
+               password: document.getElementById('pass'),
+               message: document.getElementsByClassName('login-page__form--message')[0],
+               default: defaultPage,
+               stateLogin: stateLogin,
+               checkUserLogin: checkUserLogin,
+               USERS: USERS,
+               checkUSers:checkUSers,
+          }
+     
+          getValueLoginPage(props.stateLogin, props.login, props.password);  
+          checkFormLoginPage(props.login, props.password, props.message, props.stateLogin, validPage);
+          allowSubmitPage(props.stateLogin);
+          sendFormLoginPage(props);
+          
      }
 
 

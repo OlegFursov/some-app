@@ -1,16 +1,16 @@
-export const sendFormLoginPage = (stateLogin, allowSubmitLoginPage, defaultPage, checkUserLogin,  USERS, checkUSers) => {
-     allowSubmitLoginPage(stateLogin);
-     if(stateLogin.submit){
-          checkUserLogin(stateLogin, USERS, checkUSers);
-          defaultPage.defaulLoginForm(stateLogin);
+import { Routes } from "../index.js";
+
+export const sendFormLoginPage = (input) => {
+     if(input.stateLogin.submit){
+          input.checkUserLogin(input.checkUSers, input.USERS, input.stateLogin);
+          input.default.defaulLoginForm(input.stateLogin);
      }
 }
 
 export const sendFormRegistrationPage = (stateRegistaration, defaultPage, USERS, checkUSers) => {
      if(stateRegistaration.submit){
           checkUSers.addUSersToServer(USERS, stateRegistaration);
-          location.hash ='#/nextPage'
-
+          location.hash = `#/${Routes[3].hash}`
      defaultPage.defaultRegistrationForm(stateRegistaration)
      }  
 }

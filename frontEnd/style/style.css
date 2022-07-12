@@ -9,6 +9,7 @@
      --color-border-reg-block: #000;
      --color-btn-cteate: rgba(141, 251, 141, 0.5);
      --color-btn-cancel: rgba(255, 69, 69, 0.544);
+     --color-box-shadow: rgba(0, 0, 0, 0);
      /** var font-size */
 
      /** var time */
@@ -99,7 +100,7 @@ ul{
      gap: 20px;
 }
 
-h2{
+h2{  
      text-align: center;
      text-shadow: 5px 3px 3px rgb(103, 172, 0);
      font-family: 'Arima', cursive;
@@ -116,7 +117,7 @@ h2{
      padding: 10px 5px 30px ;
      background-color: rgb(155, 154, 158);
      border-radius: 5px;
-     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.58);
+     box-shadow: 0px 0px 5px 5px var(--color-box-shadow);
      margin-bottom: 10px;
 
 }
@@ -192,19 +193,23 @@ a:active{
      max-width: 900px;
      margin: 10px auto;
      background: var(--color-background-registration);
-     box-shadow: 5px 0 40px 10px var(--color-link-greate-account);
+     box-shadow: 5px 0 40px 10px var(--color-box-shadow);
      border-radius: 20px;
 }
-
+.registration-container{
+     margin: 0 auto;
+     max-width: 800px;
+}
 .registration-form{
      display: flex;
      flex-direction: column;
-     gap: 20px;
+     gap: 30px;
+   
 }
 .registration-form > h2 {
      margin: 30px 0;
      color: var(--color-text-registration);
-     text-shadow: 0px 10px 20px var(--color-text-registration);
+     text-shadow: 0px 10px 20px var(--color-box-shadow);
      font-family: 'Courier New', Courier, monospace;
 }
 input{
@@ -213,13 +218,13 @@ input{
 
 figure{
      min-width: 600px;
-     margin: 0 auto;
+     margin: 0 ;
      display: flex;
      /* flex-direction: column; */
-     /* justify-content: space-between; */
+     justify-content: space-between;
      gap: 40px;
      border: 1px solid black;
-     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
      border-radius: 10px;
      padding: 15px 15px; 
 }
@@ -239,6 +244,21 @@ figure{
      gap: 30px;
 }
 
+.registration-block--input{
+     display: flex;
+     justify-content: space-between;
+}
+
+#surname,
+#name,
+#phone_number,
+#city{
+     max-width: 400px;
+     width: 100%;
+     text-align: end;
+     padding: 0 10px;
+}
+
 figcaption{
      text-align: center;
      margin: auto 0;
@@ -249,13 +269,14 @@ figcaption{
 
 .registration-block--name{
      max-width: 800px;
-     margin: 50px auto 10px;
+     /* margin: 50px auto 10px; */
      display: flex;
+     flex-direction: column;
      gap: 20px;
      padding: 15px 15px;
      border: 1px solid var(--color-border-reg-block);
      border-radius: 10px;
-     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
 }
 .registration-block-item {
      max-width: 800px;
@@ -277,18 +298,20 @@ mark{
 }
 select{
      border-radius: 5px;
-     box-shadow: 0px 0 3px 3px var(--color-text-registration);
+     border: 1px solid var(--color-border-reg-block);
+     box-shadow: 0px 0 3px 3px var(--color-box-shadow);
     
 }
 
 
 .registration-block--auth{
      max-width: 800px;
-     margin: 0 45px;
+     /* margin: 0 45px; */
      display: flex;
      gap: 10px;
      justify-content: center;
-     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+     border: 1px solid var(--color-border-reg-block);
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
      border-radius: 10px;
      padding: 15px 15px;
      
@@ -302,13 +325,14 @@ select{
 
 .registration-block-pass{
      max-width: 800px;
-     margin: 20px 45px;
+     /* margin: 20px 45px; */
      padding: 15px 15px;
      display: flex;
      justify-content: center;
      gap: 20px;
      flex-direction: column;
-     box-shadow: 0px 0 5px 6px var(--color-text-registration);
+     border: 1px solid var(--color-border-reg-block);
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
      border-radius: 10px;
     
 }
@@ -371,7 +395,8 @@ select{
      
      :root{
           --color-background-registration: #000;
-          --color-link-greate-account: #fff
+          --color-link-greate-account: #fff;
+          --color-box-shadow: #fff;
      }
      a{
           color: var(--color-text-registration);

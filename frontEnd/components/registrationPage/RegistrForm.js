@@ -1,11 +1,8 @@
 import { stateRegistration, USERS } from "../../helper/constants.js";
-import { getValueRegistrationPage } from "../../config/getValueInput.js";
-import { checkEmailRegistrationPage } from '../../config/validationForm.js'
-import { checkPassRegistration } from "../../config/validationForm.js";
-import { getPasswordRegistrationPage } from "../../config/getValueInput.js";
-import { checkFormRegistration } from "../../config/validationForm.js";
+import { getAdiitionalField, getValueRegistrationPage } from "../../config/getValueInput.js";
+import { checkFormRegistration, checkPassRegistration, checkEmailRegistrationPage, checkAdditionalFild, checkPassword } from "../../config/setValidationForm.js";
 import { sendFormRegistrationPage } from "../../config/sendForm.js";
-import { defaultPage, validationEmail, validPass, checkUSers } from "../../config/helpObj.js";
+import { defaultPage,  validPass, checkUSers } from "../../config/helpObj.js";
 
 import Utils from '../../helper/utils.js'
 
@@ -26,53 +23,68 @@ export default class RegisrForm extends Utils {
                res(`
                <section class="registration">
                     <div class="registration-massege"></div>
-                    <form action="#" id="reg-form" class="registration-form">
-                         <h2> Let's create your profile</h2>
-                         <figure>
-                              <img  class="registration-img" src="./img/without.png" alt="avatar">
-                              <div class="registration-img-block__name">
-                                   <figcaption id ="textLogin">${stateRegistration.login}</figcaption>
-                                   <figcaption id ="nameText">${stateRegistration.fullName}</figcaption>
+                    <div class="registration-container">
+                         <form action="#" id="reg-form" class="registration-form">
+                              <h2> Let's create your profile</h2>
+                              <figure>
+                                   <img  class="registration-img" src="./img/without.png" alt="avatar">
+                                   <div class="registration-img-block__name">
+                                        <figcaption id ="textLogin">${stateRegistration.login}</figcaption>
+                                        <figcaption id ="nameText">${stateRegistration.fullName}</figcaption>
+                                   </div>
+                              
+                              </figure>
+                              <div class="registration-block--name">
+                                   <div class="registration-block--input">
+                                        <label for="surname" class="registration-block-item">Put your Login here <mark>*</mark> : </label>
+                                        <input type="text" placeholder="Surname" id="surname" value="">
+                                   </div>
+                                   <div class="registration-block--input">
+                                        <label for="name" class="registration-block-item">Put your fullname here <mark>*</mark> : </label>
+                                        <input type="text" placeholder="Name" id="name" value="">
+                                   </div>
+                                   <div class="registration-block--input">
+                                        <label for="phone number" class="registration-block-item">Put your phone number here <mark>*</mark> : + </label>
+                                        <input type="text" placeholder="phone number" id="phone_number" value="">
+                                   </div>
+                                   <div class="registration-block--input">
+                                        <label for="city" class="registration-block-item">Where are you living? <mark>*</mark> : </label>
+                                        <input type="text" placeholder="City" id="city" value="">
+                                   </div>
+                                   
                               </div>
-                             
-                         </figure>
-                         <div class="registration-block--name">
-                              <label for="surname" class="registration-block-item">Put your Login here <mark>*</mark> : </label>
-                              <input type="text" placeholder="Surname" id="surname" value="">
-                         
-                              <label for="name" class="registration-block-item">Put your fullname here <mark>*</mark> : </label>
-                              <input type="text" placeholder="Name" id="name" value="">
-                         </div>
-                         <div class="registration-block-gender">
-                              <label for="gender" class="registration-block-item">Choose your sex</label>
-                              <select name="gender" id="gender">
-                                   <option disabled selected value="Choose sex">Choose your sex</option>
-                                   <option value="Male">Male</option>
-                                   <option value="Female">Female</option>
-                                   <option selected value="With out">Whit out</option>
-                              </select>
-                         </div>
-                         <div class="registration-block--auth">
-                              <label  for="email" class="registration-block-item">Put your email here <mark>*</mark> : </label>
-                              <input class="registration-block-item" type="text" placeholder="email" id="email" value="">
-                         </div>
-                         <div class="registration-block-pass">
-                              <div>
-                                   <label class="registration-block-item" for="password">Put your password here <mark>*</mark> : </label>
-                                   <input type="password" placeholder="password" id="pass1" value="">
+                              <div class="registration-block-gender">
+                                   <label for="gender" class="registration-block-item">Choose your sex</label>
+                                   <select name="gender" id="gender">
+                                        <option disabled selected value="Choose sex">Choose your sex</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option selected value="With out">Whit out</option>
+                                   </select>
                               </div>
-                              <div>
-                                   <label class="registration-block-item"for="password">Confirm your password Please! <mark>*</mark> : </label>
-                                   <input type="password" placeholder=" Cofirm password" id="pass2" value="">
+                              <div class="registration-block--auth">
+                                   <label  for="email" class="registration-block-item">Put your email here <mark>*</mark> : </label>
+                                   <input class="registration-block-item" type="email" placeholder="email" id="email" value="">
                               </div>
-                              <span id ="message"></span>
-                         </div>
-                         
-                         <div class="registration-block-btn">
-                              <button id="btnCreate">Create</button>
-                              <button id="btnCancel">Cancel</button>
-                         </div>
-                    </form>
+                              <div class="registration-block-pass">
+                                   <div>
+                                        <label class="registration-block-item" for="password">Put your password here <mark>*</mark> : </label>
+                                        <input type="password" placeholder="password" id="pass1" value="">
+                                   </div>
+                                   <div>
+                                        <label class="registration-block-item"for="password">Confirm your password Please! <mark>*</mark> : </label>
+                                        <input type="password" placeholder=" Cofirm password" id="pass2" value="">
+                                   </div>
+                                   <span id ="message"></span>
+                              </div>
+                              
+                              <div class="registration-block-btn">
+                                   <button id="btnCreate">Create</button>
+                                   <button id="btnCancel">Cancel</button>
+                              </div>
+                         </form>
+                    </div>
+                    
                 </section>`)
           })
      }
@@ -82,19 +94,34 @@ export default class RegisrForm extends Utils {
      }
 
      handelCahge(){
-          const fullNameRegistration = document.getElementById('name');
-          const loginRegistration = document.getElementById('surname');
-          const genderRegistration = document.getElementById('gender')
-          const emailRegistration = document.getElementById('email');
-          const pass1Rgistration = document.getElementById('pass1');
-          const pass2Registration = document.getElementById('pass2');
-          const message = document.getElementById('message');
+          const props = {
+               fullName: document.getElementById('name'),
+               login: document.getElementById('surname'),
+               gender: document.getElementById('gender'),
+               email: document.getElementById('email'),
+               phoneNumber: document.getElementById('phone_number'),
+               city: document.getElementById('city'),
+               password1: document.getElementById('pass1'), 
+               password2: document.getElementById('pass2'),
+               message: document.getElementById('message'),
+               submit: false,
+               passValid: false,
+          }
+
+          props.phoneNumber.onblur = (e) => {
+               e.preventDefault();
+               e.stopPropagation();
+               let number = props.phoneNumber.value.trim().replace(/[^0-9\w]/g, '');
+               props.phoneNumber.value = number.length <= 11 ? 
+               `+${number.slice(0,2)} ${number.slice(2,5)} ${number.slice(5,8)} ${number.slice(8,)}`:
+               `+${number.slice(0,3)} ${number.slice(3,5)} ${number.slice(5,8)} ${number.slice(8,10)} ${number.slice(10,12)}`;
+          }
           
           document.getElementsByClassName('registration')[0].addEventListener('keyup', (e)=>{
-               getValueRegistrationPage(stateRegistration, fullNameRegistration, loginRegistration, genderRegistration);
+               getValueRegistrationPage(stateRegistration, props);
                this.renderName(e);
                this.changeImg();
-               checkPassRegistration(stateRegistration, pass1Rgistration, pass2Registration, validPass );
+               checkPassRegistration(stateRegistration, props.password1, props.password2, validPass);
           });
 
           
@@ -102,14 +129,13 @@ export default class RegisrForm extends Utils {
           document.getElementById('btnCreate').addEventListener('click', (e) => {
                e.preventDefault();
                e.stopPropagation();
-               checkEmailRegistrationPage(stateRegistration, emailRegistration, validationEmail, message);
-               getPasswordRegistrationPage(stateRegistration, pass1Rgistration, pass2Registration, message);
-               checkFormRegistration(stateRegistration, validationEmail);
+               checkAdditionalFild(stateRegistration, props.phoneNumber, props.city)
+               getAdiitionalField(stateRegistration, props.phoneNumber, props.city)
+               checkEmailRegistrationPage(stateRegistration, props.email, props.message);
+               checkPassword(stateRegistration, props.password1, props.password2, message);
+               checkFormRegistration(stateRegistration, props.fullName, props.login);
                sendFormRegistrationPage(stateRegistration, defaultPage, USERS, checkUSers); 
-                
           })
-
-          
      }
 
      renderName() {

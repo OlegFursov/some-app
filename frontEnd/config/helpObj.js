@@ -1,37 +1,36 @@
+import { Routes } from "../index.js";
 
-
-export const validLoginPage ={
-     validLogin: (inputLogin, message) => {
-          inputLogin.classList.remove('error');
-          message.innerText = '';
+export const validPage = {
+     validation : (...argument) => {  //* has refactored 
+          return argument.forEach(e => e.value == ''? e.classList.add('error') : e.classList.remove('error'))
      },
-     notValidLogin : (inputLogin, message) => {
-          inputLogin.classList.add('error');
-          message.innerText = 'Please fill both fields';
+     validNumumberInput: (...argument) => { //* has refactored 
+          for(let element of argument){
+               if(!/^[\d\+][\d\(\)\ -]{9,14}\d$/.test(element.value.trim().replace(/[^0-9\w]/g, ''))) {
+                    element.classList.add('error');
+                    alert('your phone number is wrong, put correct phone number only number' );
+                    return false;
+               }else{
+                    element.classList.remove('error');
+                    return true;
+               }
+          }
      },
-     validPass: (inputPass, message) => {
-          inputPass.classList.remove('error');
-          message.innerText = ''
-     },
-     notValidPass: (inputPass, message) => {
-          inputPass.classList.add('error');
-          message.innerText = 'Please fill both fields';
+     validStringInput: (...argument) => { //* has refactored 
+         for(let string of argument){
+               if(/^[A-Z]{0,1}(?:^|\s|-)([a-z]){3,10}/g.test(string.value)){
+                   string.classList.add('error');
+                   alert('Please fill Your city correcrt, start wlth Upper case letter');
+                   return false;
+               }else{
+                    string.classList.remove('error');
+                    return true;   
+               }
+         }
      }
 }
 
-export const validationEmail ={
-     valid: (state, email) => {
-          state.email = email.value.toLowerCase();
-          email.classList.remove('error');
-          
 
-     },
-     notValid: (email)=>{
-          email.classList.add('error');
-          alert('Please fill correct email')
-         
-     }
-}
 
 export const validPass = {
      validPass: (state, pass1, pass2) => {
@@ -53,8 +52,8 @@ export const validPass = {
 
 export const defaultPage ={
      defaulLoginForm: (stateLogin)=>{
-          stateLogin.valueLogin = '';
-          stateLogin.valuePass = '';
+          stateLogin.login = '';
+          stateLogin.password = '';
           stateLogin.submit = false;
           
      },
@@ -64,6 +63,8 @@ export const defaultPage ={
           stateRegistaration.gender = 'With out.png';
           stateRegistaration.email = '';
           stateRegistaration.password ='';
+          stateRegistaration.phoneNumber = '';
+          stateRegistaration.city = '';
           stateRegistaration.submit = false;
           stateRegistaration.passValid = false;
 
@@ -81,14 +82,9 @@ export const checkUSers ={
                localStorage.setItem('User', JSON.stringify(USERS));
           }
      },
-
-     getUserToServer: (stateLogin, USERS) => {
+     getUserToServer: (USERS, state) => {
           USERS = JSON.parse(localStorage.getItem('User'));
-          const matched = USERS.filter((e) => {
-               return e.login == stateLogin.valueLogin && e.password == stateLogin.valuePass;
-          })
-          return matched.length  ? location.hash ='#/hello': alert('Please create acaount')
-          
-          
+          USERS.find(e =>  e.login == state.login && e.password == state.password) 
+               ? location.hash =`#${Routes[3].hash}` : alert('Please create acaount');
      }
 }

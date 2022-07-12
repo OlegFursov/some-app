@@ -1,29 +1,25 @@
-
-import { validPass } from "./helpObj.js";
-
-export const getValueLoginPage = (...argument) =>{
-     const [stateLogin, inputLogin, inputPass] = argument;
-     stateLogin.valueLogin = inputLogin.value.toLowerCase();
-     stateLogin.valuePass = inputPass.value; 
-    
+     export const getValueLoginPage = (stateLogin, inputLogin, inputPass) =>{
+     stateLogin.login = inputLogin.value.toLowerCase();
+     stateLogin.password = inputPass.value; 
 }
 
 export const getValueRegistrationPage = (...argument) => {
-    const  [stateRegistration, fullName, loginName, gender] = argument;
-     stateRegistration.fullName = fullName.value.toLowerCase();
-     stateRegistration.login = loginName.value.toLowerCase();
-     stateRegistration.gender = gender.value;
+     const  [stateRegistration, props] = argument;
+
+     stateRegistration.fullName = props.fullName.value.toLowerCase();
+     stateRegistration.login = props.login.value.toLowerCase();
+     stateRegistration.gender = props.gender.value;
+     stateRegistration.phoneNumber = props.phoneNumber.value;
+     stateRegistration.city = props.city;
 }
 
-export const getPasswordRegistrationPage = (stateRegistaration, pass1Registration, pass2Registration,message) =>{
-     const reg = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{3,}/g;
-     if(reg.test(pass1Registration.value) && stateRegistaration.passValid){  
-          stateRegistaration.password = pass1Registration.value;
-            validPass.validPass(stateRegistaration ,pass1Registration, pass2Registration, message);
-               
-     }else{
-          validPass.notValidPass(stateRegistaration ,pass1Registration, pass2Registration, message);
-               message.innerText = `Password must include at at least 8 symbols, big and small characters`;       
+export const getValuePassword = (state, password) => ( state.password = password.value) //* has refactored 
+
+
+export const getAdiitionalField = (state, phoneNumber, city) => { //* has refactored 
+     if(state.submit) {
+          state.phoneNumber = phoneNumber.value.replace(/[^0-9]/g,'');
+          state.city = city.value;
      }
 }
 
