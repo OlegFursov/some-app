@@ -1,6 +1,6 @@
 import { sendFormLoginPage } from "../../config/sendForm.js";
 import { stateLogin,  USERS } from "../../helper/constants.js";
-import { getValueLoginPage } from '../../config/getValueInput.js';
+import { checkValueLoginPage, getValueLoginPage } from '../../config/getValueInput.js';
 
 
 
@@ -54,8 +54,8 @@ export default class LoginRender{
                stateLogin: stateLogin,
                USERS: USERS,
           }
-     
-          getValueLoginPage(props.login, props.password, props.message, stateLogin);
+          checkValueLoginPage(props.login, props.password, props.message, stateLogin)
+          getValueLoginPage();
           if(!props.login.required && !props.password.required) sendFormLoginPage(props.USERS, props.stateLogin, props.message);
      
           

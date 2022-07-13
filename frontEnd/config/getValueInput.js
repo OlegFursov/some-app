@@ -1,8 +1,6 @@
 import { stateLogin, stateRegistration } from "../helper/constants.js";
 import { validationIsEmpty, validationCapitalLater, validationOnNecessaryElements } from "./validations.js";
 
-// import { validPage } from "./helpObj.js";
-
  
 const paramLogForm = {
           text: 'Please fill bouth fields',
@@ -29,17 +27,19 @@ const papamRegForm ={
 
 
 //*----------------------------------------------------------------LoginPage-------------------------------------------------------------------------------------------
-export const getValueLoginPage = (login, password, message) =>{
+export const checkValueLoginPage = (login, password, message) =>{
      validationIsEmpty(login, message, paramLogForm.text, paramLogForm.selector);
      validationIsEmpty(password, message, paramLogForm.text, paramLogForm.selector);
+}
+
+
+export const getValueLoginPage = () =>{
      stateLogin.login = login.value.toLowerCase();
      stateLogin.password = password.value; 
 }
 
 //*--------------------------------------------------------------Registration form--------------------------------------------------------------------------------------
-
-
-export const getValueRegistrationPage = (props) => {
+export const checkValueRegistratoinPage = (props) => {
      validationIsEmpty(props.login, props.message, papamRegForm.textIsEmpty);
      validationIsEmpty(props.fullName, props.message, papamRegForm.textIsEmpty);
      validationIsEmpty(props.phoneNumber, props.message, papamRegForm.textIsEmpty);
@@ -48,6 +48,10 @@ export const getValueRegistrationPage = (props) => {
      validationOnNecessaryElements(props.phoneNumber, props.message, papamRegForm.regexPhoneNumber, papamRegForm.textErrorNumberInput);
      validationOnNecessaryElements(props.email, props.message, papamRegForm.reqexEmail, papamRegForm.textErrorInvalidEmail);
      validationOnNecessaryElements(props.password1, props.message, papamRegForm.regexPassword, papamRegForm.textErrorInvalidPass);
+
+}
+
+export const getValueRegistrationPage = () => {
      stateRegistration.fullName = props.fullName.value;
      stateRegistration.login = props.login.value;
      stateRegistration.gender = props.gender.value;

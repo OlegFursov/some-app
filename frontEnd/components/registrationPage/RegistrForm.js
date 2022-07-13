@@ -1,6 +1,6 @@
 import { stateRegistration, USERS} from "../../helper/constants.js";
 import { validationEqualityValue } from "../../config/validations.js"
-import { getValueRegistrationPage } from "../../config/getValueInput.js";
+import { checkValueRegistratoinPage, getValueRegistrationPage } from "../../config/getValueInput.js";
 import { sendFormRegistrationPage } from "../../config/sendForm.js";
 import Utils from '../../helper/utils.js'
 import { allowSubmitForm } from "../../config/setValidationForm.js";
@@ -124,7 +124,8 @@ export default class RegisrForm extends Utils {
 
           document.getElementById('btnCreate').addEventListener('click', (e) => {
                e.preventDefault();
-               getValueRegistrationPage(props);
+               checkValueRegistratoinPage(props)
+               getValueRegistrationPage();
                if(allowSubmitForm(props)) { sendFormRegistrationPage(stateRegistration, USERS) };
           })
      }
