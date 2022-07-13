@@ -1,10 +1,9 @@
-import { stateRegistration, USERS } from "../../helper/constants.js";
-import { getAdiitionalField, getValueRegistrationPage } from "../../config/getValueInput.js";
-import { checkFormRegistration, checkPassRegistration, checkEmailRegistrationPage, checkAdditionalFild, checkPassword } from "../../config/setValidationForm.js";
+import { stateRegistration, USERS} from "../../helper/constants.js";
+import { validationEqualityValue } from "../../config/validations.js"
+import { getValueRegistrationPage } from "../../config/getValueInput.js";
 import { sendFormRegistrationPage } from "../../config/sendForm.js";
-import { defaultPage,  validPass, checkUSers } from "../../config/helpObj.js";
-
 import Utils from '../../helper/utils.js'
+import { allowSubmitForm } from "../../config/setValidationForm.js";
 
 
 export default class RegisrForm extends Utils {
@@ -37,19 +36,19 @@ export default class RegisrForm extends Utils {
                               <div class="registration-block--name">
                                    <div class="registration-block--input">
                                         <label for="surname" class="registration-block-item">Put your Login here <mark>*</mark> : </label>
-                                        <input type="text" placeholder="Surname" id="surname" value="">
+                                        <input type="text" required="" placeholder="Surname" id="surname" value="">
                                    </div>
                                    <div class="registration-block--input">
                                         <label for="name" class="registration-block-item">Put your fullname here <mark>*</mark> : </label>
-                                        <input type="text" placeholder="Name" id="name" value="">
+                                        <input type="text" required="" placeholder="Name" id="name" value="">
                                    </div>
                                    <div class="registration-block--input">
                                         <label for="phone number" class="registration-block-item">Put your phone number here <mark>*</mark> : + </label>
-                                        <input type="text" placeholder="phone number" id="phone_number" value="">
+                                        <input type="text" required="" placeholder="phone number" id="phone_number" value="">
                                    </div>
                                    <div class="registration-block--input">
                                         <label for="city" class="registration-block-item">Where are you living? <mark>*</mark> : </label>
-                                        <input type="text" placeholder="City" id="city" value="">
+                                        <input type="text" required="" placeholder="City" id="city" value="">
                                    </div>
                                    
                               </div>
@@ -64,22 +63,22 @@ export default class RegisrForm extends Utils {
                               </div>
                               <div class="registration-block--auth">
                                    <label  for="email" class="registration-block-item">Put your email here <mark>*</mark> : </label>
-                                   <input class="registration-block-item" type="email" placeholder="email" id="email" value="">
+                                   <input class="registration-block-item" required="" type="email" placeholder="email" id="email" value="">
                               </div>
                               <div class="registration-block-pass">
                                    <div>
                                         <label class="registration-block-item" for="password">Put your password here <mark>*</mark> : </label>
-                                        <input type="password" placeholder="password" id="pass1" value="">
+                                        <input type="password" required="" placeholder="password" id="pass1" value="">
                                    </div>
                                    <div>
                                         <label class="registration-block-item"for="password">Confirm your password Please! <mark>*</mark> : </label>
-                                        <input type="password" placeholder=" Cofirm password" id="pass2" value="">
+                                        <input type="password" required="" placeholder=" Cofirm password" id="pass2" value="">
                                    </div>
                                    <span id ="message"></span>
                               </div>
                               
                               <div class="registration-block-btn">
-                                   <button id="btnCreate">Create</button>
+                                   <button type="submit" id="btnCreate">Create</button>
                                    <button id="btnCancel">Cancel</button>
                               </div>
                          </form>
@@ -104,8 +103,6 @@ export default class RegisrForm extends Utils {
                password1: document.getElementById('pass1'), 
                password2: document.getElementById('pass2'),
                message: document.getElementById('message'),
-               submit: false,
-               passValid: false,
           }
 
           props.phoneNumber.onblur = (e) => {
@@ -113,39 +110,33 @@ export default class RegisrForm extends Utils {
                e.stopPropagation();
                let number = props.phoneNumber.value.trim().replace(/[^0-9\w]/g, '');
                props.phoneNumber.value = number.length <= 11 ? 
-               `+${number.slice(0,2)} ${number.slice(2,5)} ${number.slice(5,8)} ${number.slice(8,)}`:
-               `+${number.slice(0,3)} ${number.slice(3,5)} ${number.slice(5,8)} ${number.slice(8,10)} ${number.slice(10,12)}`;
+               `${number.slice(0,2)} ${number.slice(2,5)} ${number.slice(5,8)} ${number.slice(8,)}`:
+               `${number.slice(0,3)} ${number.slice(3,5)} ${number.slice(5,8)} ${number.slice(8,10)} ${number.slice(10,12)}`;
           }
           
           document.getElementsByClassName('registration')[0].addEventListener('keyup', (e)=>{
-               getValueRegistrationPage(stateRegistration, props);
-               this.renderName(e);
-               this.changeImg();
-               checkPassRegistration(stateRegistration, props.password1, props.password2, validPass);
+               this.renderName(props.login, props.fullName);
+               this.changeImg(props.gender);
+               validationEqualityValue(props.password1, props.password2, props.message,)
           });
 
           
 
           document.getElementById('btnCreate').addEventListener('click', (e) => {
                e.preventDefault();
-               e.stopPropagation();
-               checkAdditionalFild(stateRegistration, props.phoneNumber, props.city)
-               getAdiitionalField(stateRegistration, props.phoneNumber, props.city)
-               checkEmailRegistrationPage(stateRegistration, props.email, props.message);
-               checkPassword(stateRegistration, props.password1, props.password2, message);
-               checkFormRegistration(stateRegistration, props.fullName, props.login);
-               sendFormRegistrationPage(stateRegistration, defaultPage, USERS, checkUSers); 
+               getValueRegistrationPage(props);
+               if(allowSubmitForm(props)) { sendFormRegistrationPage(stateRegistration, USERS) };
           })
      }
 
-     renderName() {
-        document.getElementById('textLogin').innerText =`${stateRegistration.login}`;
-        document.getElementById('nameText').innerText =`${stateRegistration.fullName}`;
+     renderName(login, name) {
+        document.getElementById('textLogin').innerText =`${login.value}`;
+        document.getElementById('nameText').innerText =`${name.value}`;
      }
 
-     changeImg() {
+     changeImg(gender) {
           const img = document.getElementsByClassName('registration-img')[0];
-          img.src = `./img/${this.imgObj[stateRegistration.gender]}`; 
+          img.src = `./img/${this.imgObj[gender.value]}`; 
      }
 
 

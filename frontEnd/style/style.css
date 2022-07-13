@@ -127,6 +127,7 @@ h2{
 
 span{
      color: red;
+     font-size: 25px;
      text-align: center;
      height: 30px;
 }
@@ -174,6 +175,9 @@ a:active{
 }
 
 .error{
+     box-shadow: 0 0 5px 2px red;
+}
+input  :required{
      box-shadow: 0 0 5px 2px red;
 }
 

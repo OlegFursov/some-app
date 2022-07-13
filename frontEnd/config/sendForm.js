@@ -1,18 +1,30 @@
 import { Routes } from "../index.js";
+import { validationLocalStorage } from "./validations.js";
+import { checkUSers, defaultPage } from "./helpObj.js";
 
-export const sendFormLoginPage = (input) => {
-     if(input.stateLogin.submit){
-          input.checkUserLogin(input.checkUSers, input.USERS, input.stateLogin);
-          input.default.defaulLoginForm(input.stateLogin);
-     }
+
+
+const sendLoginPage = {
+     key: 'User',
+     text: 'Please create profile'
 }
 
-export const sendFormRegistrationPage = (stateRegistaration, defaultPage, USERS, checkUSers) => {
-     if(stateRegistaration.submit){
-          checkUSers.addUSersToServer(USERS, stateRegistaration);
-          location.hash = `#/${Routes[3].hash}`
-     defaultPage.defaultRegistrationForm(stateRegistaration)
-     }  
+const sendRegPage ={
+     
+}
+
+export const sendFormLoginPage = (USERS, state, message) => {
+     if(validationLocalStorage(sendLoginPage.key)){
+          checkUSers.getUserToServer(USERS, state, message, sendLoginPage.text);
+          defaultPage.defaulLoginForm(state);
+     }
+  
+}
+
+export const sendFormRegistrationPage = (state, USERS) => {
+     checkUSers.addUSersToServer(USERS, state);
+     location.hash = `#/${Routes[3].hash}`;
+     defaultPage.defaultRegistrationForm(state);
 }
 
 

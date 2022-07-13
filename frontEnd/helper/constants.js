@@ -2,7 +2,7 @@
 export const stateLogin = {
      login: '',
      password: '',
-     submit: false,
+    
 } 
 
 export const stateRegistration ={
@@ -13,8 +13,7 @@ export const stateRegistration ={
      password:'',
      phoneNumber:'',
      city:'',
-     submit: false,
-     passValid: false,
+     
 }
 
 

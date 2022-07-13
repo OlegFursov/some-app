@@ -1,9 +1,7 @@
 import { sendFormLoginPage } from "../../config/sendForm.js";
 import { stateLogin,  USERS } from "../../helper/constants.js";
-import { checkFormLoginPage } from '../../config/setValidationForm.js';
-import { allowSubmitPage, checkUserLogin } from "../../config/setValidationForm.js";
 import { getValueLoginPage } from '../../config/getValueInput.js';
-import { defaultPage, validPage, checkUSers} from '../../config/helpObj.js'
+
 
 
 export default class LoginRender{
@@ -23,13 +21,13 @@ export default class LoginRender{
                                    <div class="login-page__form--block">
                                         <div class="login-page__form--item">
                                              <label for="form_login" class="login-page__form--lable">Login <span>*</span> :</label>
-                                             <input type="login" id="login" name="login" value="" class="login-page__form--input ">
+                                             <input type="login" id="login" name="login" required="" minlength ="1"  value="" class="login-page__form--input ">
                
                                              <label for="form_password" class="login-page__form--lable">Password <span>*</span> :</label>
-                                             <input type="password" id="pass" name="password" value="" class="login-page__form--input">
+                                             <input type="password" id="pass" name="password" value="" required="" minlength ="8" class="login-page__form--input">
                                         </div>
                                         <div class="login-page__form--btn">
-                                             <button id="btn" class="login-page__form--btn">Login</button>
+                                             <button type="submit" id="btn" class="login-page__form--btn">Login</button>
                                         </div>
                                         <div class="login-page__form--link">
                                              <a href="#">Forgot password ?</a>
@@ -53,17 +51,14 @@ export default class LoginRender{
                login: document.getElementById('login'),
                password: document.getElementById('pass'),
                message: document.getElementsByClassName('login-page__form--message')[0],
-               default: defaultPage,
                stateLogin: stateLogin,
-               checkUserLogin: checkUserLogin,
                USERS: USERS,
-               checkUSers:checkUSers,
           }
      
-          getValueLoginPage(props.stateLogin, props.login, props.password);  
-          checkFormLoginPage(props.login, props.password, props.message, props.stateLogin, validPage);
-          allowSubmitPage(props.stateLogin);
-          sendFormLoginPage(props);
+          getValueLoginPage(props.login, props.password, props.message, stateLogin);
+          if(!props.login.required && !props.password.required) sendFormLoginPage(props.USERS, props.stateLogin, props.message);
+     
+          
           
      }
 
