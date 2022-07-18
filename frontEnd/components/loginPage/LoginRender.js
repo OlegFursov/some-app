@@ -1,6 +1,6 @@
-import { sendFormLoginPage } from "../../config/sendForm.js";
-import { stateLogin,  USERS } from "../../helper/constants.js";
-import { checkValueLoginPage, getValueLoginPage } from '../../config/getValueInput.js';
+
+// import { stateLogin,  USERS } from "../../helper/constants.js";
+// import { checkValueLoginPage, getValueLoginPage } from '../../config/getValueInput.js';
 
 
 
@@ -20,11 +20,16 @@ export default class LoginRender{
                                    <span class="login-page__form--message"></span>
                                    <div class="login-page__form--block">
                                         <div class="login-page__form--item">
-                                             <label for="form_login" class="login-page__form--lable">Login <span>*</span> :</label>
-                                             <input type="login" id="login" name="login" required="" minlength ="1"  value="" class="login-page__form--input ">
-               
-                                             <label for="form_password" class="login-page__form--lable">Password <span>*</span> :</label>
-                                             <input type="password" id="pass" name="password" value="" required="" minlength ="8" class="login-page__form--input">
+                                             <div class="login-page__form--inputLogin">
+                                                  <label for="form_login" class="login-page__form--lable">Login <span>*</span> :</label>
+                                                  <input type="login" id="login" name="login" required="" minlength ="1"  value="" class="login-page__form--input ">
+                                             </div>
+                                             
+                                             <div class="login-page__form--inputLogin">
+                                                  <label for="form_password" class="login-page__form--lable">Password <span>*</span> :</label>
+                                                  <input type="password" id="password1" name="password" value="" required="" minlength ="8" class="login-page__form--input">
+                                             </div>
+                                             
                                         </div>
                                         <div class="login-page__form--btn">
                                              <button type="submit" id="btn" class="login-page__form--btn">Login</button>
@@ -55,7 +60,7 @@ export default class LoginRender{
                USERS: USERS,
           }
           checkValueLoginPage(props.login, props.password, props.message, stateLogin)
-          getValueLoginPage();
+          getValueLoginPage(props.login, props.password);
           if(!props.login.required && !props.password.required) sendFormLoginPage(props.USERS, props.stateLogin, props.message);
      
           

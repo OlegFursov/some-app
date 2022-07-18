@@ -3,6 +3,37 @@ export const allowSubmitForm = (props) =>{
 }
 
 
+export const setVluetoState = () => {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //!--------------Some sketches----------------------------------
 
@@ -10,29 +41,36 @@ export const allowSubmitForm = (props) =>{
 //           text: 'Please fill bouth field',
 //           selector: 'error',
        
-//           // action: { valid: validPage.isValid, notValid: validPage.notValid, },
-//           // message: 'Please fill bouth fields',
-//           // submit: true, 
-//      }
+          // action: { valid: validPage.isValid, notValid: validPage.notValid, },
+          // message: 'Please fill bouth fields',
+          // submit: true, 
+    //  }
 
  //      validationPassword.every(validator)
-     // validationLogin.forEach(validator => {
-     //      if (!validator.function(login.value)){
-     //           validator.action.notValid(login);
-     //           message.innerText = validator.message;
-     //           return;
-     //      }
-     //      validator.action.valid(login);
-     //      state.login = login.value;
-     //      message.innerText = '';
-     // });
-     // validationPassword.forEach(validator => {
-     //      if (!validator.function(password.value)){
-     //           validator.action.notValid(password);
-     //           message.innerText = validator.message;
-     //           return;
-     //      }
+    //  validationLogin.forEach(validator => {
+    //       if (!validator.function(login.value)){
+    //            validator.action.notValid(login);
+    //            message.innerText = validator.message;
+    //            return;
+    //       }
+    //       validator.action.valid(login);
+    //       state.login = login.value;
+    //       message.innerText = '';
+    //  });
+    //  validationPassword.forEach(validator => {
+    //       if (!validator.function(password.value)){
+    //            validator.action.notValid(password);
+    //            message.innerText = validator.message;
+    //            return;
+    //       }
      //      validator.action.valid(password);
      //      state.password = password.value;
      //      message.innerText = '';
      // });
+
+
+
+      // function : validationIsEmpty, 
+          // action: { valid: validPage.isValid, notValid: validPage.notValid,},
+          // message: 'Please fill bouth fields',
+          // submit: true,
