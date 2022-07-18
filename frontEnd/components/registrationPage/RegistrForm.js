@@ -108,7 +108,8 @@ export default class RegisrForm extends Utils {
                this.valideit.isValid();
                this.valideit.showNotifications();
                // this.valideit.showMessageNotify();
-               sendRequestToServer(this.props); 
+               sendRequestToServer(stateRegistration, this.props); 
+               console.log(stateRegistration);
           })
      }
 

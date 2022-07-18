@@ -349,6 +349,7 @@ select{
 }
 #password1,
 #password2 {
+     text-align: end;
      max-width: 400px;
      width: 100%;
 }

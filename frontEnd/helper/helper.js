@@ -12,16 +12,16 @@ export const parseRequestURL = () =>{
 
 
 
-export const installState = (props) => {
-    return props.forEach(element => stateRegistration[`${element.field.id}`] = element.field.value)
+export const installState = (state, props) => {
+    return props.forEach(element => state[`${element.field.id}`] = element.field.value)
 }
 
 
-export const sendRequestToServer = (props) => {
+export const sendRequestToServer = (state, props) => {
      const isValid = props.every(element => element.isValid)
      if(isValid){
-          installState(props);
-          sendForm.sendFormRegistrationPage(stateRegistration, USERS, props);
+          installState(state,props);
+          // sendForm.sendFormRegistrationPage(stateRegistration, USERS, props);
           
      }
 }

@@ -4,7 +4,7 @@
 
 export const stateLogin = {
      'login': '',
-     'password': '',
+     'password1': '',
     
 } 
 
@@ -13,7 +13,7 @@ export const stateRegistration ={
      'login': 'Login',
      'gender': 'With out.png',
      'email': '',
-     'password':'',
+     'password1':'',
      'phoneNumber':'',
      'city':'',
      

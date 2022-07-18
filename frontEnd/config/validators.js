@@ -3,7 +3,7 @@ export const validators ={
      isEmpty: (value)=>{
           return !! value.length;
      },
-     isValidSpecialInput: (regex,value) => {
+     isValidSpecialInput: (regex, value) => {
           return regex.test(value);
      },
 }

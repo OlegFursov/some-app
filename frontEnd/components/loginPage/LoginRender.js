@@ -1,12 +1,15 @@
-
-// import { stateLogin,  USERS } from "../../helper/constants.js";
-// import { checkValueLoginPage, getValueLoginPage } from '../../config/getValueInput.js';
+import { inputsLoginForm } from "./config.js";
+import { Control } from "../../HelpClasses/control.js";
+import { ValideitForm } from "../../HelpClasses/validateForm.js";
+import { sendRequestToServer } from "../../helper/helper.js";
+import { stateLogin } from "../../helper/constants.js";
 
 
 
 export default class LoginRender{
      constructor(){
-        
+        this.props = [];
+        this.valideit;
         
      }
      
@@ -46,25 +49,29 @@ export default class LoginRender{
      }
 
      afterRender(){
-          document.getElementById('btn').addEventListener('click', this.handelCheck); 
+          this.createObjField();
+          this.conveyPropsToClass();
+          this.handelSubmit();
+          
      }
      
+     handelSubmit(){
+          document.getElementById('btn').addEventListener('click',(e) => {
+               e.preventDefault();
+               this.valideit.isValid();
+               this.valideit.showNotifications();
+               sendRequestToServer(stateLogin, this.props)
+               console.log(stateLogin);
+          }); 
+         
+     }
 
-     handelCheck(e){
-          e.preventDefault();
-          const props = {
-               login: document.getElementById('login'),
-               password: document.getElementById('pass'),
-               message: document.getElementsByClassName('login-page__form--message')[0],
-               stateLogin: stateLogin,
-               USERS: USERS,
+     createObjField (){
+          this.props = inputsLoginForm.map(e =>  new Control(e))
           }
-          checkValueLoginPage(props.login, props.password, props.message, stateLogin)
-          getValueLoginPage(props.login, props.password);
-          if(!props.login.required && !props.password.required) sendFormLoginPage(props.USERS, props.stateLogin, props.message);
-     
-          
-          
+
+     conveyPropsToClass(){
+               this.valideit = new ValideitForm(this.props)
      }
 
 
