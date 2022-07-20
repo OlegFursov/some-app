@@ -1,71 +1,59 @@
-
-
-export const regex = {
-     phoneNumber: /^[\d\+][\d\(\)\ -]{9,14}\d$/,
-     city: /^[A-Z]{1}/,
-     password: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{3}/g,
-     email:  /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
-}
+import { pattern } from "../../helper/pattern.js"
 
 export const inputRegistrationForm = [           
      {
      id: 'name',
-     textError: 'Please fill all fields',
-     messageId:  'message',
-     type: 'simpleField',
+     errorText: 'Please fill all fields',
+     errorPlace:  'errorPlace-name',
+     regex: pattern.isEmpty,
      selector: 'error',
      },
      {
      id: 'login',
-     textError: 'Please fill all fields',
-     messageId: 'message',
-     type: 'simpleField',
+     errorText: 'Please fill all fields',
+     errorPlace: 'errorPlace-login',
+     regex: pattern.isEmpty,
      selector: 'error',
      }, 
      {
-     textError: 'Please fill all fields',
-     messageId: '',
-     regex: regex.email,
-     type: 'specialField',
+     errorText: 'Please fill all fields',
+     errorPlace: 'errorPlace-email',
+     regex: pattern.email,
      selector: 'error',
      id: 'email'
      },
      { 
-     textError: 'Please fill all fields',
-     messageId: 'message',
-     type: 'simpleField',
+     errorText: 'Please fill all fields',
+     errorPlace: 'errorPlace-gender',
+     regex: pattern.isEmpty,
      selector: 'error',
      id: 'gender'
      },
      { 
-     textError: 'Only number',
-     messageId: 'message',
-     regex: regex.phoneNumber,
-     type: 'specialField',
+     errorText: 'Only number',
+     errorPlace: 'errorPlace-phoneNumber',
+     regex: pattern.phoneNumber,
      selector: 'error',
      id: 'phoneNumber'
      }, 
      { 
-     textError: 'This is field must starts with Capital letter',
-     messageId: 'message',
-     type: 'specialField',
-     regex: regex.city,
+     errorText: 'This is field must starts with Capital letter',
+     errorPlace: 'errorPlace-city',
+     regex: pattern.city,
      selector: 'error',
      id: 'city'
      },
      {
-     textError: 'Password should be more then 8 symbol, and containts special symbol, number and Capitel letters',
-     messageId: 'message',
-     type: 'specialField',
-     regex: regex.password,
+     errorText: 'Password should be more then 8 symbol, and containts special symbol, number and Capitel letters',
+     errorPlace: 'errorPlace-password1',
+     regex: pattern.password,
      selector: 'error',
      id: 'password1'
      },
      {
-     textError: 'Password should be more then 8 symbol, and containts special symbol, number and Capitel letters',
-     messageId: 'message',
-     type: 'simpleField',
-     regex: regex.password,
+     errorText: 'Password should be more then 8 symbol, and containts special symbol, number and Capitel letters',
+     errorPlace: 'errorPlace-password2',
+     regex: pattern.isEmpty,
      selector: 'error',
      id: 'password2'
      }

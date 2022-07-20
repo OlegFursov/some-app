@@ -1,15 +1,14 @@
 import { validators } from "../config/validators.js"
 
-validators
+
 
 export class Control {
      constructor (obj){
           this.field = document.getElementById(`${obj.id}`)
-          this.textError = obj.textError
-          this.messageField = document.getElementById(`${obj.messageId}`)
+          this.errorText = obj.errorText
+          this.errorPlace = document.getElementById(`${obj.errorPlace}`)
           this.selector = obj.selector
-          this.validated = obj.type == 'simpleField' ? this.validated = validators.isEmpty : this.validated = validators.isValidSpecialInput;
-          this.type = obj.type;
+          this.validator = validators.isValidlInputs;
           this.regex = obj.regex;
           this.isValid = false;
           

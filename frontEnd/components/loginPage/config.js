@@ -1,21 +1,20 @@
-const patettern ={
-     password: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{3}/g,
-}
+import { pattern } from "../../helper/pattern.js"
 
 export const inputsLoginForm = [
      {
           id: 'login',
-          textError: 'Please fill all fields',
-          messageId:  'message',
+          errorText: 'Please enter here your Login',
+          errorPlace:  'errorPlace-LoginForm',
+          regex: pattern.isEmpty,
           type: 'simpleField',
           selector: 'error',
           },
           {
           id: 'password1',
-          textError: 'Please fill all fields',
-          messageId: 'message',
+          errorText: 'Please enter here your password',
+          errorPlace: 'errorPlace-passwordLoginForm',
           type: 'specialField',
-          regex: patettern.password,
+          regex: pattern.password,
           selector: 'error',
           }, 
 ]

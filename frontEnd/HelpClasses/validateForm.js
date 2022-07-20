@@ -1,46 +1,41 @@
+import { showNotifications, equalSameInputs, filterSameInputFromControl, showErrorText} from "../helper/helper.js";
+import { findSameFields } from "../helper/helper.js";
+import { isValidFormInput } from "../config/validators.js";
+
 export class ValideitForm {
      constructor(props){
           this.props = props;
-        
-     }
-     
-     isValid(){
-          
-          this.props.forEach(element =>{
-               if(element.type === 'simpleField'){ 
-                   element.isValid = element.validated(element.field.value)
-               }
-               if(element.type === 'specialField'){ 
-                    element.isValid = element.validated(element.regex, element.field.value)
-               }
-          })
-
+          this.isValid;
+          this.inputName = findSameFields(this.props);;
      }
 
-     showNotifications(){
-          this.props.forEach(element => element.isValid ? element.field.classList.remove(`${element.selector}`) : element.field.classList.add(`${element.selector}`))
-     }
-
-     // showMessageNotify(){
-     //      console.log(this.props);
-     //      this.props.forEach(element => {
-     //           if(!element.isValid){
-     //                console.log(element.textError);
-     //           element.messageField.innerText = `${element.textError}`
-     //           }else{
-     //           element.messageField.innerText= element.textError; 
-     //           }})
-           
-     // }
-
-     filterSameFields (){
-          return this.props.filter(e => /password/g.test(e.field.id)) 
+     setPropertis(){
+         this.isValideited = this.props.every(e => e.isValid)
      }
 
      inspectionSameFiled(){
-          const arr = this.filterSameFields();
-          arr[0].field.value === arr[1].field.value ? 
-          arr.forEach(e => e.field.classList.remove(`${e.selector}`)) : 
-          arr.forEach(e => e.field.classList.add(`${e.selector}`))
+          equalSameInputs(this.props, this.inputName);
+          showNotifications(filterSameInputFromControl(this.props, this.inputName));
+          showErrorText(filterSameInputFromControl(this.props, this.inputName));
+         
      }
+
+     isValid(){
+          isValidFormInput(this.props);
+          this.setPropertis();
+          showNotifications(this.props);
+          showErrorText(this.props)
+     }
+
+    
+    
+
+
+
+     
+          
+
+
+
+    
 }
