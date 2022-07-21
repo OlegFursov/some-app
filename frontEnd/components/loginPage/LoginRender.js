@@ -1,7 +1,7 @@
-import { htmlPage } from "../../html.js";
+import { html } from "./htmlPage.js";
 import { inputsLoginForm } from "./config.js";
 import { Control } from "../../HelpClasses/control.js";
-import { ValideitForm } from "../../HelpClasses/validateForm.js";
+import { ValidateForm } from "../../HelpClasses/validateForm.js";
 import { stateLogin, USERS } from "../../helper/constants.js";
 import { installState } from "../../helper/helper.js";
 import { sendForm } from "../../config/sendForm.js";
@@ -11,48 +11,43 @@ import { sendForm } from "../../config/sendForm.js";
 export default class LoginRender{
      constructor(){
         this.props;
-        this.valideit;
-        
+        this.validate;
      }
      
      render(){
           return new Promise(res => {
-               res(htmlPage.formLoginPage)
+               res(html)
           })
      }
 
      afterRender(){
-          this.createObjField();
+          this.createObject();
+          this.installValidClassOnForm();
           this.handelSubmit();
           
      }
 
-     createObjField (){
+     createObject (){
           this.props = inputsLoginForm.map(e =>  new Control(e))
      }
 
      installValidClassOnForm(){
-               this.valideit = new ValideitForm(this.props)
+               this.validate = new ValidateForm(this.props)
      }
      
      handelSubmit(){
           document.getElementById('btn').addEventListener('click',(e) => {
                e.preventDefault();
-               this.installValidClassOnForm();
-               this.valideit.isValid();
+               this.validate.check();
                this.submitFormToServer();
-          
           }); 
-         
      }
 
      submitFormToServer (){
-          if(this.valideit.isValideited){
+          if(this.validate.isValidated){
                installState(stateLogin, this.props);
                sendForm.sendFormLoginPage(USERS, stateLogin)
           }
-
-          console.log(stateLogin, USERS);
      }
 
      

@@ -1,30 +1,23 @@
-import { showNotifications, equalSameInputs, filterSameInputFromControl, showErrorText} from "../helper/helper.js";
-import { findSameFields } from "../helper/helper.js";
-import { isValidFormInput } from "../config/validators.js";
-
-export class ValideitForm {
+export class ValidateForm {
      constructor(props){
-          this.props = props;
-          this.isValid;
-          this.inputName = findSameFields(this.props);;
+          this.controls = props;
+          this.isValidated = false;
      }
 
-     setPropertis(){
-         this.isValideited = this.props.every(e => e.isValid)
+     installNotifications (){
+          this.controls.forEach(control =>{
+               if(control.isValid()){
+                    this.isValidated = true
+                    control.hideError();
+               }else{
+                    this.isValidated = false;
+                    control.showError();
+               }
+          })  
      }
 
-     inspectionSameFiled(){
-          equalSameInputs(this.props, this.inputName);
-          showNotifications(filterSameInputFromControl(this.props, this.inputName));
-          showErrorText(filterSameInputFromControl(this.props, this.inputName));
-         
-     }
-
-     isValid(){
-          isValidFormInput(this.props);
-          this.setPropertis();
-          showNotifications(this.props);
-          showErrorText(this.props)
+     check(){
+          this.installNotifications();   
      }
 
     

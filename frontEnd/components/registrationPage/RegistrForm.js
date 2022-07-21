@@ -1,9 +1,10 @@
-import { htmlPage } from "../../html.js";
+
+import { html } from "./htmlPage.js";
 import { Control } from "../../HelpClasses/control.js";
-import { ValideitForm } from "../../HelpClasses/validateForm.js";
+import { ValidateForm } from "../../HelpClasses/validateForm.js";
 import { stateRegistration, USERS} from "../../helper/constants.js";
 import { sendForm } from "../../config/sendForm.js";
-import { addPatterPhoneNumber, installState } from "../../helper/helper.js";
+import { addPhoneNumberPatter, installState,findSameTypeFields, removeClassToField, addClassToField } from "../../helper/helper.js";
 import Utils from '../../helper/utils.js'
 import { inputRegistrationForm } from "./config.js";
 
@@ -17,53 +18,52 @@ export default class RegisrForm extends Utils {
           'Female' : 'female.png',
           'With out': 'without.png',
          }
-         this.props;
+         this.controls;
          this.valideit;
      }
      
 
      render(){
           return new Promise(res => {
-               res(htmlPage.formRegistrations)
-          })
+               res(html)
+          });
      }
 
      afterRender(){
+          this.createObjects();
+          this.installValidClassOnForm();
           this.handelCahge();
           this.handelSubmit();
      }
 
      //! some functions 
-     createObjField (){
-          this.props = inputRegistrationForm.map(e =>  new Control(e))
+     createObjects (){
+          this.controls = inputRegistrationForm.map(e =>  new Control(e))
      }
 
      installValidClassOnForm(){
-          this.valideit = new ValideitForm(this.props)
+          this.validate = new ValidateForm(this.controls)
      }
 
      handelSubmit(){
           document.getElementById('btnCreate').addEventListener('click', (e) => {
                e.preventDefault();
-               this.createObjField();
-               this.installValidClassOnForm();
-               this.valideit.isValid();
-               this.submitFormToServer();   
+               this.validate.check();
+               this.sendFormToServer();   
           })
      }
 
      handelCahge(){
           document.getElementsByClassName('registration')[0].addEventListener('keyup', (e)=>{
-               this.createObjField();
-               this.installValidClassOnForm();
                this.showLoginNameOnPage();
                this.changeImg();
-               addPatterPhoneNumber(document.getElementById('phoneNumber'));
-               this.valideit.inspectionSameFiled();
-          
+               addPhoneNumberPatter(document.getElementById('phoneNumber'));
+               this.checkSameTyprFields();
           });
      }
 
+
+     //! functions for help 
      showLoginNameOnPage() {
           document.getElementById('textLogin').innerText =`${document.getElementById('login').value}`;
           document.getElementById('nameText').innerText =`${document.getElementById('name').value}`;
@@ -74,10 +74,17 @@ export default class RegisrForm extends Utils {
           img.src = `./img/${this.imgObj[document.getElementById('gender').value]}`; 
      }
 
-     submitFormToServer(){
-          if(this.valideit.isValideited){
-               installState(stateRegistration,this.props);
-               sendForm.sendFormRegistrationPage(stateRegistration, USERS, this.props);
+     checkSameTyprFields (){ //! like a badly idea 
+          const arr =findSameTypeFields(this.controls);
+          arr[0].field.value == arr[1].field.value ?
+          arr.forEach(control => removeClassToField(control.field, control.selector)):
+          arr.forEach(control => addClassToField(control.field, control.selector))
+     }
+
+     sendFormToServer(){
+          if(this.validate.isValidated){
+               installState(stateRegistration,this.controls);
+               sendForm.sendFormRegistrationPage(stateRegistration, USERS, this.controls);
           }
      }
 

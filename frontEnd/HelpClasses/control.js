@@ -1,4 +1,6 @@
-import { validators } from "../config/validators.js"
+import { validators } from "../config/validators.js";
+import { addClassToField, addErrorTextToErrorPlace, removeClassToField, removeErrorTextToErrorPlace } from "../helper/helper.js";
+
 
 
 
@@ -8,10 +10,25 @@ export class Control {
           this.errorText = obj.errorText
           this.errorPlace = document.getElementById(`${obj.errorPlace}`)
           this.selector = obj.selector
-          this.validator = validators.isValidlInputs;
           this.regex = obj.regex;
-          this.isValid = false;
-          
+          this.isValid = this.isValidate;
+          this.showError = this.showError;
      }
 
+     isValidate (){
+          return validators.isValidlInputs(this.regex, this.field.value); 
+
+     }
+
+     showError (){
+          addClassToField(this.field, this.selector);
+          addErrorTextToErrorPlace(this.errorPlace, this.errorText);
+     }
+
+     hideError (){
+          removeClassToField(this.field, this.selector);
+          removeErrorTextToErrorPlace(this.errorPlace);
+     }
+
+     
 }
