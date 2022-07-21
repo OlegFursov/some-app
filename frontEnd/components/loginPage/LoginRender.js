@@ -10,29 +10,27 @@ import { sendForm } from "../../config/sendForm.js";
 
 export default class LoginRender{
      constructor(){
-        this.props;
+        this.controls;
         this.validate;
      }
      
      render(){
-          return new Promise(res => {
-               res(html)
-          })
+          return new Promise(res => res(html))
      }
 
      afterRender(){
-          this.createObject();
+          this.createObjects();
           this.installValidClassOnForm();
           this.handelSubmit();
           
      }
 
-     createObject (){
-          this.props = inputsLoginForm.map(e =>  new Control(e))
+     createObjects (){
+          this.controls = inputsLoginForm.map(e =>  new Control(e))
      }
 
      installValidClassOnForm(){
-               this.validate = new ValidateForm(this.props)
+               this.validate = new ValidateForm(this.controls)
      }
      
      handelSubmit(){
@@ -44,8 +42,9 @@ export default class LoginRender{
      }
 
      submitFormToServer (){
+          
           if(this.controls.every(control => control.field.required)){
-               installState(stateLogin, this.props);
+               installState(stateLogin, this.controls);
                sendForm.sendFormLoginPage(USERS, stateLogin)
           }
      }

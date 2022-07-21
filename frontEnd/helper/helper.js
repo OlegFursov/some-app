@@ -3,6 +3,7 @@ export const parseRequestURL = () =>{
      return request;
 }
 
+
 export const addClassToField = (element, selector) =>{
      element.classList.add(`${selector}`);
 }

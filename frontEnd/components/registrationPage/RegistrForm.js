@@ -8,8 +8,6 @@ import { addPhoneNumberPatter, installState,findSameTypeFields, removeClassToFie
 import Utils from '../../helper/utils.js'
 import { inputRegistrationForm } from "./config.js";
 
-
-
 export default class RegisrForm extends Utils {
      constructor(){
          super()
@@ -18,15 +16,10 @@ export default class RegisrForm extends Utils {
           'Female' : 'female.png',
           'With out': 'without.png',
          }
-         this.controls;
-         this.valideit;
      }
      
-
      render(){
-          return new Promise(res => {
-               res(html)
-          });
+          return new Promise(res => res(html));
      }
 
      afterRender(){
@@ -50,7 +43,7 @@ export default class RegisrForm extends Utils {
                e.preventDefault();
                this.validate.check();
                this.sendFormToServer();   
-          })
+          });
      }
 
      handelCahge(){
@@ -78,7 +71,7 @@ export default class RegisrForm extends Utils {
           const arr = findSameTypeFields(this.controls);
           arr[0].field.value == arr[1].field.value ?
           arr.forEach(control => removeClassToField(control.field, control.selector)):
-          arr.forEach(control => addClassToField(control.field, control.selector))
+          arr.forEach(control => addClassToField(control.field, control.selector));
      }
 
      sendFormToServer(){

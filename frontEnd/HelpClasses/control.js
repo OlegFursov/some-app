@@ -31,5 +31,15 @@ export class Control {
           removeErrorTextToErrorPlace(this.errorPlace);
      }
 
+     setRequired(){
+          this.field.required = true;
+     }
+
+     removeRequired(){
+          this.field.required = false;
+     }
+
+    
+
      
 }
