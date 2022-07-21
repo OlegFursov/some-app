@@ -63,7 +63,7 @@ export default class RegisrForm extends Utils {
      }
 
 
-     //! functions for help 
+     //! functions for helps
      showLoginNameOnPage() {
           document.getElementById('textLogin').innerText =`${document.getElementById('login').value}`;
           document.getElementById('nameText').innerText =`${document.getElementById('name').value}`;
@@ -82,7 +82,7 @@ export default class RegisrForm extends Utils {
      }
 
      sendFormToServer(){
-          if(this.validate.isValidated){
+          if(this.controls.every(control => control.field.required)){
                installState(stateRegistration, this.controls);
                sendForm.sendFormRegistrationPage(stateRegistration, USERS, this.controls);
           }

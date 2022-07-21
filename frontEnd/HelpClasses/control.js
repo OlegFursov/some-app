@@ -13,6 +13,7 @@ export class Control {
           this.regex = obj.regex;
           this.isValid = this.isValidate;
           this.showError = this.showError;
+         
      }
 
      isValidate (){

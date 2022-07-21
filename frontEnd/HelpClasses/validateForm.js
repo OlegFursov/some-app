@@ -1,17 +1,16 @@
 export class ValidateForm {
      constructor(props){
           this.controls = props;
-          this.isValidated = false;
      }
 
      installNotifications (){
           this.controls.forEach(control =>{
-               if(control.isValid()){
-                    this.isValidated = true
-                    control.hideError();
-               }else{
-                    this.isValidated = false;
+               if(!control.isValid()){
+                    control.field.required = false;
                     control.showError();
+               }else{
+                    control.field.required = true;
+                    control.hideError();
                }
           })  
      }

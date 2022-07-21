@@ -44,7 +44,7 @@ export default class LoginRender{
      }
 
      submitFormToServer (){
-          if(this.validate.isValidated){
+          if(this.controls.every(control => control.field.required)){
                installState(stateLogin, this.props);
                sendForm.sendFormLoginPage(USERS, stateLogin)
           }
