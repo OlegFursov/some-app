@@ -1,9 +1,6 @@
 export const parseRequestURL = () =>{ 
-     const request = {
-          resorse : location.hash.replace(/[^a-zA-Z]/g, ''),
-     };
+     const request = {resorse : location.hash.replace(/[^a-zA-Z]/g, '')};
      return request;
-
 }
 
 export const addClassToField = (element, selector) =>{

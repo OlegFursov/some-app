@@ -58,7 +58,7 @@ export default class RegisrForm extends Utils {
                this.showLoginNameOnPage();
                this.changeImg();
                addPhoneNumberPatter(document.getElementById('phoneNumber'));
-               this.checkSameTyprFields();
+               this.checkSameTypeFields();
           });
      }
 
@@ -74,8 +74,8 @@ export default class RegisrForm extends Utils {
           img.src = `./img/${this.imgObj[document.getElementById('gender').value]}`; 
      }
 
-     checkSameTyprFields (){ //! like a badly idea 
-          const arr =findSameTypeFields(this.controls);
+     checkSameTypeFields (){ //! like a badly idea 
+          const arr = findSameTypeFields(this.controls);
           arr[0].field.value == arr[1].field.value ?
           arr.forEach(control => removeClassToField(control.field, control.selector)):
           arr.forEach(control => addClassToField(control.field, control.selector))
@@ -83,7 +83,7 @@ export default class RegisrForm extends Utils {
 
      sendFormToServer(){
           if(this.validate.isValidated){
-               installState(stateRegistration,this.controls);
+               installState(stateRegistration, this.controls);
                sendForm.sendFormRegistrationPage(stateRegistration, USERS, this.controls);
           }
      }
