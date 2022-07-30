@@ -1,0 +1,203 @@
+    /** var color */
+    :root{
+     --color-background-table: rgb(202, 255, 250);
+     --color-boxShadow-table: #fff;
+     --color-border-radius-table: #000;
+     --color-background-row: #fff;
+     --color-massege: #000;
+     --color-border-row: #000;
+     --color-background-row: #fff;
+
+     /** var font size*/
+     --size-message: 50px;
+
+      /** var  size border*/
+     --size-border-radius-table: 10px;
+
+     /** var  font family*/
+     --font-family: 'Times New Roman', Times, serif;
+    }
+   
+
+
+.user-list{
+     margin: 20px auto;
+     max-width: 1100px;
+     width: 100%;
+    
+    
+}
+.user-list-logout{
+     text-align: end;
+}
+
+.user-list-logout > a{
+     font-size: 20px;
+     color: #000;
+     border: 1px solid black;
+     background: #fff;
+     border-radius: 15px ;
+     padding: 2px 30px;
+}
+
+
+.user-list_message{
+     text-align: center;
+     font-size: var(--size-message);
+     font-family: var(--font-family);
+     color: var(--color-massege);
+}
+
+
+.user-list__table{
+    
+     margin: 10px auto;
+     max-width: 1000px;
+     width: 100%;
+     padding: 20px 0;
+     background-color: var(--color-background-table);
+     border:var(--color-border-radius-table) 1px solid;
+     border-radius: var(--size-border-radius-table);
+}
+.user-list__row{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin: 8px 30px;
+     padding: 5px 30px;
+     background-color: var(--color-background-row);
+     border: 1px solid var(--color-border-row);
+     border-radius: var(--size-border-radius-table);
+     box-shadow: 5px 5px 7px 2px var(--color-border-radius-table);
+}
+
+.user-list__row > div > h3{
+     color: #000;
+     font-size: 25px;
+     font-family: 'Courier New', Courier, monospace;
+}
+.user-list__name{
+     color: #000;
+     font-size: 20px;
+}
+.user-block-btn{
+     display: flex;
+     gap: 10px;
+}
+.user-block-btn > button{
+     padding: 5px 20px;
+     border-radius: 5px;
+     cursor: pointer;
+     background: rgba(255, 253, 253, 0.52);
+     box-shadow: 5px 5px 15px 5px var(--color-background-table);
+     
+}
+
+
+.user-modal {
+     /* display: block; */
+     display: flex;
+     position: fixed; 
+     left: 0; 
+     top: 0;
+     width: 100%;
+     height: 100%; 
+     background-color: rgb(0, 0, 0);
+     background-color: rgba(0, 0, 0, 0.5);
+   }
+   .user-modal-content {
+    
+     position: relative; 
+     background-color: white;
+     border: 1px solid var(--color-massege);
+     border-radius: 20px;
+     padding: 20px; 
+     margin:  100px auto ; 
+     width: 60%; 
+     -webkit-animation-name: animatetop;
+     -webkit-animation-duration: 1s;
+     animation-name: animatetop;
+     animation-duration: 1s
+   }
+   .close-btn {
+     float: right; 
+     color: lightgray; 
+     font-size: 24px;  
+     font-weight: bold;
+   }
+   .close-btn:hover {
+     color: rgb(255, 48, 48);
+     transition: 0.3s linear;
+   }
+
+   .user-modal-item{
+     margin: 90px 0 0 ;
+     text-align: center;
+   }
+
+   .user-modal-info{
+     margin: 90px 50px;
+     display: flex;
+     gap: 20px;
+     justify-content: space-between;
+   }
+   .user-modal-privatInfo{
+     display: flex;
+     flex-direction: column;
+     gap: 30px;
+   }
+
+   .user-modal-input_block{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    border-bottom: 2px gray solid;
+   }
+
+   .user-modal-input_block > lable{
+      font-size: 20px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: 700;
+
+   }
+   .user-modal-input{
+    border: none;
+    background: inherit;
+  
+   }
+   .user-modal-input :active{
+    border: #000 1px solid;
+      border-radius: 0px;
+   }
+   
+   .user-modal-btn{
+     margin: 0 auto;
+     display: flex;
+     max-width: 600px;
+     justify-content: center;
+     gap: 10px;
+   }
+
+   .user-modal-btn > button{
+     padding: 5px 30px;
+     cursor: pointer;
+     border-radius: 5px;
+   }
+   @-webkit-keyframes animatetop {
+     from {left: -1500px; opacity:0} 
+     to {left:0; opacity:1}
+   }
+   @keyframes animatetop {
+     from {left: -1500px; opacity:0}
+     to {left:0; opacity:1}
+   }
+
+
+   @media (prefers-color-scheme: dark){
+    :root {
+      --color-border-radius-table: #fff;
+      --color-background-table:rgb(18, 13, 153);
+      --color-massege: rgb(255, 255, 255);
+      --color-background-row:rgba(255, 255, 255, 0.404);
+    }
+   }

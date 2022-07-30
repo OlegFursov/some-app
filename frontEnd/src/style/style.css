@@ -1,0 +1,419 @@
+:root {
+     /** var color */
+     --color-link-forgot-password: rgb(5, 5, 235);
+     --color-link-hover: red;
+     --color-link-greate-account: #000;
+     --color-background-registration: linear-gradient(to left, rgb(0, 0, 0) 5% , rgb(31, 29, 29)30%, rgb(56, 55, 55) );;
+     --color-text-registration: #fff;
+     --color-necessary-text: red;
+     --color-border-reg-block: #000;
+     --color-btn-cteate: rgba(141, 251, 141, 0.5);
+     --color-btn-cancel: rgba(255, 69, 69, 0.544);
+     --color-box-shadow: rgba(0, 0, 0, 0);
+     /** var font-size */
+
+     /** var time */
+
+}
+
+
+body{
+     color: #000;
+     padding: 0;
+     margin: 0;
+     min-width: 370px;
+     background-color: rgb(255, 251, 251);
+   
+}
+h1,
+h2,
+h3,
+h4,
+p{
+     margin: 0;
+     padding: 0;
+}
+a{
+     text-decoration: none;
+     padding: 0;
+}
+ul{
+     list-style: none;
+     padding: 0;
+}
+*,
+*::before,
+::after{
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+     box-sizing: border-box;
+}
+
+.login-page{
+     margin: 70px auto;
+     display: grid;
+     gap: 10px;
+     grid-template-columns: 1fr 500px 1fr  
+     
+}
+/* 
+.login-page{
+     max-width: 500px;
+     margin: 0px auto;
+     float: left;
+     top: 0;
+     right: 0;
+     transform:  translate3d(120%, 30% ,0);
+} */
+
+/* .login-page{
+     max-width: 500px;
+     margin: 70px auto;
+     display: block;
+} */
+
+/* .login-page{
+     margin: 50px auto;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
+     gap: 40px;
+} */
+
+
+.login-page__form{
+     align-self: center;
+     background-color: rgb(152, 152, 152);
+     border: 1px solid #000;
+     border-radius: 10px;
+     padding: 30px 10px;
+     box-shadow: 0 0 10px 20px rgba(9, 255, 9, 0.139);
+}
+
+.login-page__form--body{
+     
+     margin: 10px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+h2{  
+     text-align: center;
+     text-shadow: 5px 3px 3px rgb(103, 172, 0);
+     font-family: 'Arima', cursive;
+     font-size: 30px;
+     color: #000;
+     
+}
+
+
+
+.login-page__form--item{
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+     padding: 10px 5px 30px ;
+     /* background-color: rgb(155, 154, 158); */
+     border-radius: 5px;
+     box-shadow: 0px 0px 5px 5px var(--color-box-shadow);
+     margin-bottom: 10px;
+
+}
+.login-page__form--lable{
+     
+     min-width: 100px;
+}
+
+span{
+     color: red;
+     font-size: 15px;
+     text-align: center;
+     height: 10px;
+}
+.login-page__form--inputLogin{
+  display: flex;
+}
+.login-page__form--input{
+   margin: 5px;
+   height: 30px;
+   box-shadow: 2px 0 40px 5px lawngreen;
+     
+}
+
+.login-page__form--btn{
+     margin-top: 10px;
+     display: flex;
+     justify-content: center;
+     
+}
+
+.login-page__form--btn{
+     padding: 5px 70px;
+     border-radius: 10px;
+     cursor: pointer;
+    
+     
+}
+.login-page__form--link{
+     text-align: end;
+     margin: 10px;
+}
+
+a{
+     color: var(--color-link-forgot-password);
+     font-size: 14px;
+     font-family: 'Arima', cursive;
+     
+}
+
+a:hover{
+     color: var(--color-link-hover);
+     transition: 0.1s linear;
+}
+
+a:active{
+     text-shadow: 0 0 2px #000;
+}
+
+.error{
+     box-shadow: 0 0 5px 2px red;
+}
+input  :required{
+     box-shadow: 0 0 5px 2px red;
+}
+
+.login-registration__link{
+     text-align: center;
+   
+}
+.login-registration__link a{
+    font-size: 22px;
+    font-family: serif;
+ 
+
+    
+}
+
+.registration{
+     max-width: 900px;
+     margin: 10px auto;
+     background: var(--color-background-registration);
+     box-shadow: 5px 0 40px 10px var(--color-box-shadow);
+     border-radius: 20px;
+}
+.registration-container{
+     margin: 0 auto;
+     max-width: 800px;
+}
+.registration-form{
+     display: flex;
+     flex-direction: column;
+     gap: 30px;
+   
+}
+.registration-form > h2 {
+     margin: 30px 0;
+     color: var(--color-text-registration);
+     text-shadow: 0px 10px 20px var(--color-box-shadow);
+     font-family: 'Courier New', Courier, monospace;
+}
+input{
+     border-radius: 5px;
+}
+
+figure{
+     min-width: 600px;
+     margin: 0 ;
+     display: flex;
+     /* flex-direction: column; */
+     justify-content: space-between;
+     gap: 40px;
+     border: 1px solid black;
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
+     border-radius: 10px;
+     padding: 15px 15px; 
+}
+.registration-img{
+     max-width: 200px;
+     max-height: 200px;
+     border-radius: 50%;
+     overflow: hidden;
+     border: 1px solid var(--color-text-registration);
+}
+
+.registration-img-block__name{
+     max-width: 800px;
+     /* width: 100%; */
+     display: flex;
+     flex-direction: column;
+     /* gap: 30px; */
+}
+
+.registration-block--input{
+     display: flex;
+     justify-content: space-between;
+}
+
+#login,
+#name,
+#phoneNumber,
+#city{
+     max-width: 400px;
+     width: 100%;
+     text-align: end;
+     padding: 0 10px;
+}
+
+figcaption{
+     text-align: center;
+     margin: auto 0;
+     color: var(--color-text-registration);
+     font-size: 24px;
+     font-family:'Courier New', Courier, monospace;
+}
+
+.registration-block--name{
+     max-width: 800px;
+     /* margin: 50px auto 10px; */
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     padding: 15px 15px;
+     border: 1px solid var(--color-border-reg-block);
+     border-radius: 10px;
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
+}
+.registration-block-item {
+     max-width: 800px;
+     color: var(--color-text-registration);
+     font-size: 15px;
+     font-family:'Courier New', Courier, monospace;
+     
+}
+mark{
+     background: inherit;
+     color: var(--color-necessary-text);
+}
+
+.registration-block-gender{
+     max-width: 800px;
+     margin: 0 auto;
+     display: flex;
+     gap: 30px;
+}
+select{
+     border-radius: 5px;
+     border: 1px solid var(--color-border-reg-block);
+     box-shadow: 0px 0 3px 3px var(--color-box-shadow);
+    
+}
+
+
+.registration-block--auth{
+     max-width: 800px;
+     /* margin: 0 45px; */
+     display: flex;
+     gap: 10px;
+     justify-content: center;
+     border: 1px solid var(--color-border-reg-block);
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
+     border-radius: 10px;
+     padding: 15px 15px;
+     
+}
+
+#email{
+     max-width: 400px;
+     width: 100%;
+     color: #000;
+}
+
+.registration-block-pass{
+     max-width: 800px;
+     /* margin: 20px 45px; */
+     padding: 15px 15px;
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     flex-direction: column;
+     border: 1px solid var(--color-border-reg-block);
+     box-shadow: 0px 0 5px 6px var(--color-box-shadow);
+     border-radius: 10px;
+    
+}
+#password1,
+#password2 {
+     text-align: end;
+     max-width: 400px;
+     width: 100%;
+}
+
+.registration-block-btn{
+     max-width: 800px;
+    margin: 0px auto 40px;
+    display: flex;
+    gap: 20px;
+}
+
+#btnCreate,
+#btnCancel{
+     padding: 10px 45px;
+     border-radius: 10px ;
+     font-size: 18px;
+     font-family:'Courier New', Courier, monospace;
+     background-color: var(--color-btn-cteate);
+     color: var(--color-text-registration)
+}
+#btnCancel{
+     background-color: var(--color-btn-cancel);
+}
+
+.page-error{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.page-error-message{
+     font-size: 50px;
+}
+
+.hello,
+.next{
+     color:var(--color-text-registration);
+}
+
+
+
+
+
+@media (prefers-color-scheme: dark) {
+     body  { 
+          background:  #000; 
+          color: #000; 
+     }
+     h2{
+          color: var(--color-text-registration);
+          text-decoration: double;
+     }
+     .login-page__form{
+          box-shadow: 0 0 10px 20px rgb(9, 255, 9);
+     }
+     
+     :root{
+          --color-background-registration: #000;
+          --color-link-greate-account: #fff;
+          --color-box-shadow: #fff;
+     }
+     a{
+          color: var(--color-text-registration);
+          text-shadow: 0px  5px 6px rgb(9, 255, 9);
+     }
+   }
+
+
+
+
+
