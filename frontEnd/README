@@ -1,6 +1,6 @@
 You need to have Live server by you VS code
 
 You must to start app via Live server 
-
+// necessary!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 for starts app by development mode - npm start
 for starts app by production mode - nmo run build after use folder 'dist'
