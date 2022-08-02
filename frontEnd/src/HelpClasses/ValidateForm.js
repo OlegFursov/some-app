@@ -19,6 +19,8 @@ export class ValidateForm {
           return this.controls.every(input => input.isValid)
      }
 
+    
+
      setState(){
           return this.controls.forEach(value => {
                if(value.field.type !== 'password'){

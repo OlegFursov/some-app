@@ -16,7 +16,7 @@ export const stateRegistration ={
      'password1':'',
      'phoneNumber':'',
      'city':'',
-     id: ''
+     'id': ''
      
 }
 

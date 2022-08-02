@@ -41,7 +41,7 @@ export const getAttributId = (id) =>{
      return +id.replace(/[a-zA-Z\-]/g, '');
 } 
 
-export const getUserFromList =(id, list) => {
+export const findItemToList =(id, list) => {
      return list.find(item => item.id === id);
 }
 
@@ -49,4 +49,6 @@ export const filterList = (id, list) => {
      return list.filter(item => item.id !== id);
 }
 
-
+export const installText = (text) => {
+     return text;
+}

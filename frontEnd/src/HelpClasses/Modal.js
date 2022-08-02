@@ -1,42 +1,27 @@
-import { filterList } from "../helper/helper";
+import { addClassToField, removeClassToField } from "../helper/helper";
+
+const NAME_MODAL_CLASS = 'modal';
+const MODAL_SHOW = 'modal_show';
 
 export default class Modal {
-     constructor(...argument){
-          const [setModal, USERS] = argument
-          this.setModal = setModal;
-          this.USERS = USERS;
-          this.userObject;
-          this.modalObject;
+     constructor(element, config){
+          this._element = element;
+          this._config = config; 
+        
      }
 
-     setUserObject(getUserFromList){
-          this.userObject = getUserFromList;
+     _showModal(){
+          addClassToField(this._element, MODAL_SHOW);  
      }
 
-     renderModal(item, id){
-          document.getElementById(`${id}`).insertAdjacentHTML('afterend', this.setModal(item))
+     _hiddenModal(){
+         removeClassToField(this._element, MODAL_SHOW);
      }
 
-     removeModal(modalSelector){
-         document.getElementsByClassName(`${modalSelector}`)[0].outerHTML = '';
-     }
 
-     getFieldsFromModal(tagsSelector){
-         return document.querySelectorAll(`.${tagsSelector}`)  
+     _renderInfoIntoModal(){
+          this._config.modalRoot.innerHTML = this._config.infoToModalRender();
+          
      }
-
-     editFieldsFromModal(tagsSelector){
-          this.getFieldsFromModal(tagsSelector).forEach(input => input.disabled = false); 
-     }
-
-     confirmChangeInfo(tagsSelector){
-          this.getFieldsFromModal(tagsSelector).forEach((input) => {
-          this.userObject[input.name] = input.value.toLowerCase();
-          return input.disabled = true;
-         })
-     }
-
-     setUserList(USERS){
-          USERS = filterList(this.userObject.id, USERS);
-     }   
+       
 }

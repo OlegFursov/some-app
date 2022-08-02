@@ -5,7 +5,7 @@ import male from "../../img/male.png";
 import withOut from "../../img/without.png";
 import { ValidateForm } from "../../HelpClasses/ValidateForm";
 import { stateRegistration} from "../../helper/constants";
-import { addPhoneNumberPatter, findSameTypeFields, addClassToField, removeClassToField } from "../../helper/helper";
+import { addPhoneNumberPatter, changeLocalHash, findSameTypeFields, addClassToField, removeClassToField } from "../../helper/helper";
 import    Components  from "../../HelpClasses/Components";
 import { inputRegistrationForm } from "./config";
 import Task from "../../HelpClasses/Task";
@@ -32,14 +32,21 @@ export default class RegisrForm extends Components {
           this.form = new ValidateForm(inputRegistrationForm, stateRegistration);
      }
 
+     setUserLogin(state){
+          this.task.setDataToArray(state);
+          this.task.setIdTodata(state);
+          this.task.setDataToServer(state);
+          alert('Profile has created ;)')
+          changeLocalHash(3);
+     }
+
      handelSubmit(){
           document.getElementById('btnCreate').addEventListener('click', (e) => {
                e.preventDefault();
                this.form.check();
                if(this.form.isValid()){
                     this.form.setState();
-                    this.task.setUserLogin(stateRegistration);
-              
+                    this.setUserLogin(stateRegistration);
                }   
           });
      }

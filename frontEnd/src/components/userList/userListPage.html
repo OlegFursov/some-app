@@ -3,5 +3,24 @@
           <a class="user-list-link" href="#/loginPage"></a>
      </div>
      <h3 class="user-list_message"></h3>
+
+     <!---- Modal  -->
+          <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" hidden="true">
+               <div class="modal-dialog">
+                    <div class="modal-content">
+                         <div class="modal-block_btn">
+                              <button type="button" name="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                         </div>
+                         <div id="modal-root" class="modal-body">
+                              
+                         </div>
+                         <div class="modal-block_btn" id="isAuthorized_change-block">
+                              <button type="button" name="confirm" class="btn btn-secondary" data-bs-dismiss="modal">Confirm</button>
+                              <button type="button" name="edit" class="btn btn-primary">Edit</button>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     <!-- Modal  -->
      <table id="table" class="user-list__table"></table>  
 </section>
