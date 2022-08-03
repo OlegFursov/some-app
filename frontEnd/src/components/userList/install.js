@@ -18,7 +18,7 @@ export const setHTML = (data) => {
 
 export const setHTMLforModal = (item) => {
      return  ` 
-          <h1 class="user-modal-item">Info about ${item.name.toUpperCase()}</h1>
+          <h1 class="modal-item">Info about ${item.name.toUpperCase()}</h1>
                     <div class="user-modal-info">
                          <div class="user-modal-privatInfo">
                               <div class ="user-modal-input_block">

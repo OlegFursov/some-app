@@ -13,6 +13,7 @@ import LoginRender from "../loginPage/LoginRender";
 export default class UserList extends Components{
      constructor(){
           super(userListPage)
+          this.acsessability = true;
           this.task = new Task();
           this.login = new LoginRender();
           this.isAuthorized = this.login.isAuthorized();
@@ -20,14 +21,18 @@ export default class UserList extends Components{
           this.actions ={
                view: (e)=>{
                     this.setUserObject(findItemToList(getAttributId(e.target.id), this.task.data));
+                    this.setAcsessability();
                     this.modal._showModal();
                     this.setButtonAtModal();
-                    this.modal._renderInfoIntoModal();
+                    this.modal._setAssesabilityAtributtes(this.acsessability);
+                    this.modal._renderInfoIntoModal();    
                },
                close: ()=> {
+                    this.setAcsessability();
                     this.modal._hiddenModal();
+                    this.modal._setAssesabilityAtributtes(this.acsessability);
                },
-               delete: ()=> {
+               delete: (e)=> {
                     this.removeDatafromList(getAttributId(e.target.id));
                     this.renderUserList();
                },
@@ -60,13 +65,15 @@ export default class UserList extends Components{
      }
 
      setModalElement(){
-          this.modal = new Modal(document.getElementById('staticBackdrop'), this.config);
+          this.modal = new Modal(this.config);
      }
 
      setConfigToModal(){
           this.config = {
                infoToModalRender:() => setHTMLforModal(this.users),
                modalRoot: document.getElementsByClassName('modal-body')[0],
+               
+              
           } 
      }
 
@@ -123,6 +130,16 @@ export default class UserList extends Components{
      
     showVisualChange(){
           this.getFieldsFromModal().forEach(field => addClassToField(field, 'active-inputs'))
+    }
+
+
+    setAcsessability(){
+     if(this.acsessability){
+          this.acsessability = false; 
+     }else{
+          this.acsessability = true;
+     }
+     
     }
 
 
