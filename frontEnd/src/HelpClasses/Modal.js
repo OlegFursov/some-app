@@ -2,17 +2,12 @@ import { addClassToField, removeClassToField } from "../helper/helper";
 const MODAL_ID = 'staticBackdrop';
 const MODAL_SHOW = 'modal_show';
 const KEY_CODE = 27;
-const MODAL_ROOT = 'modal-body';
-const MODAL_CONTENT = 'modal-item';
+const MODAL_CONTENT = 'modal-info';
 export default class Modal {
      constructor(config){
           this._element =  document.getElementById(MODAL_ID);
           this._config = config; 
           this._addEventListner= this._addEventListner();
-          this._ariaContent ={
-               modal_root: document.querySelector(`.${MODAL_ROOT}`),
-               modal_content: document.querySelector(`.${MODAL_CONTENT}`),
-          }
      }
 
 
@@ -32,8 +27,8 @@ export default class Modal {
      }
 
      _setScrollToModal(){
-        if(this._ariaContent.modal_block.scrollHeight < this._ariaContent.modal_content){
-               this._ariaContent.modal_block.style.overflowY = 'auto';
+        if(this._config.modalRoot.clientHeight <= document.querySelector(`.${MODAL_CONTENT}`).clientHeight){
+               this._config.modalRoot.style.overflowY = 'auto';
         }
      }
 

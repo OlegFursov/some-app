@@ -18,8 +18,9 @@ export const setHTML = (data) => {
 
 export const setHTMLforModal = (item) => {
      return  ` 
+          
           <h1 class="modal-item">Info about ${item.name.toUpperCase()}</h1>
-                    <div class="user-modal-info">
+                    <div class="modal-info">
                          <div class="user-modal-privatInfo">
                               <div class ="user-modal-input_block">
                                    <lable>Name :</lable>
@@ -48,7 +49,7 @@ export const setHTMLforModal = (item) => {
                                    <input type="text" name="email" disabled class="user-modal-input" value="${item.email}"></input>
                               </div>
                          </div>
-                    </div>
+                   
           `
 }
 
