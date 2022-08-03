@@ -135,7 +135,7 @@
    }
 
    .modal-body{
-    height: 400px;
+    /* height: 400px; */
     /* max-width: 300px;
     width: 100%; */
    }
@@ -177,7 +177,7 @@
 
    .modal-info{
      margin: 50px 50px;
-     height: 400px;
+     /* height: 400px; */
     
    }
    .user-modal-privatInfo{
