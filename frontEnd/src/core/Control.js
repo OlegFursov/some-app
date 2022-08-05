@@ -1,4 +1,4 @@
-import { validators } from "../config/validators";
+import { validators } from "../config/config-validators";
 import { addClassToField, addErrorTextToErrorPlace, removeClassToField, removeErrorTextToErrorPlace} from "../helper/helper";
 
 

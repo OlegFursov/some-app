@@ -1,26 +1,27 @@
-import Components from "../../HelpClasses/Components";
-import userListPage from "./userListPage.html";
-import css from "./userList.css";
-import Task from "../../HelpClasses/Task";
-import { setHTML, setHTMLforModal} from "./install";
-import Modal from "../../HelpClasses/Modal";
+import Components from "../../core/Component";
+import listPage from "./list-page.html";
+import style from "./list-style.css";
+import Support from "../../core/Support";
+import { setHTML, setHTMLforModal} from "./list-config";
+import Modal from "../../core/Modal";
 import { getAttributId, findItemToList, filterList, addClassToField, installText} from "../../helper/helper";
-import LoginRender from "../loginPage/LoginRender";
+import LoginPage from "../login-page/login-index";
 
 
 
 
-export default class UserList extends Components{
+export default class ListPage extends Components{
      constructor(){
-          super(userListPage)
+          super(listPage)
+          this.key = 'User'
           this.acsessability = true;
-          this.task = new Task();
-          this.login = new LoginRender();
+          this.support = new Support(this.key);
+          this.login = new LoginPage();
           this.isAuthorized = this.login.isAuthorized();
           //!actions
           this.actions ={
                view: (e)=>{
-                    this.setUserObject(findItemToList(getAttributId(e.target.id), this.task.data));
+                    this.setUserObject(findItemToList(getAttributId(e.target.id), this.support.data));
                     this.setAcsessability();
                     this.modal._showModal();
                     this.setButtonAtModal();
@@ -43,7 +44,7 @@ export default class UserList extends Components{
                confirm: ()=> {
                     this.confirmChangeInfo();
                     this.renderUserList();
-                    this.task.setDataToServer(this.task.data);
+                    this.support.setDataToLocalStorage(this.support.data);
                     this.modal._hiddenModal();
                }        
           } 
@@ -51,14 +52,23 @@ export default class UserList extends Components{
      }
 
      afterRender(){ 
-        this.renderUserList();
-        this.isUserAuthrized();
-        this.handelChange();
-        this.setConfigToModal();
-        this.setModalElement();   
+          this.getElementsWithPage()
+          this.renderUserList();
+          this.isUserAuthrized();
+          this.handleChange();
+          this.setConfigToModal();
+          this.setModalElement();   
      }
 
      //!config
+
+     getElementsWithPage(){
+          this.elements = {
+               table : document.getElementById('table'),
+               link : document.getElementsByClassName('user-list-link')[0],
+               message: document.getElementsByClassName('user-list_message')[0]
+          }
+     }
 
      setUserObject(findItemToList){
           this.users = findItemToList;
@@ -72,15 +82,13 @@ export default class UserList extends Components{
           this.config = {
                infoToModalRender:() => setHTMLforModal(this.users),
                modalRoot: document.getElementsByClassName('modal-body')[0],
-               
-              
           } 
      }
 
      renderUserList(){
-          document.getElementsByClassName('user-list_message')[0].innerText = this.setMessageText() ;
-          document.getElementsByClassName('user-list-link')[0].innerText = this.setLogButtonText();
-          document.getElementById('table').innerHTML = setHTML(this.task.data)
+          this.elements.message.innerText = this.setMessageText() ;
+          this.elements.link.innerText = this.setLogButtonText();
+          this.elements.table.innerHTML = setHTML(this.support.data)
      }
 
 
@@ -95,11 +103,11 @@ export default class UserList extends Components{
      }
      
      setMessageText(){
-          return this.task.data.length ? installText(`User list has ${this.task.data.length} items`) :installText('User list is empty, click on Create account')
+          return this.support.data.length ? installText(`User list has ${this.support.data.length} items`) :installText('User list is empty, click on Create account')
      }
 
      setUserList(dataBase){
-          this.task.data = filterList(this.users.id, dataBase);
+          this.support.data = filterList(this.users.id, dataBase);
      } 
 
      setButtonAtModal(){
@@ -117,8 +125,8 @@ export default class UserList extends Components{
      }
 
      removeDatafromList(id){
-          this.task.data = filterList(id, this.task.data);
-          return this.task.data;
+          this.support.data = filterList(id, this.support.data);
+          return this.support.data;
      }
 
      confirmChangeInfo(){
@@ -143,8 +151,8 @@ export default class UserList extends Components{
     }
 
 
-    //!handelChange
-     handelChange(){
+    //!handleChange
+     handleChange(){
           document.getElementsByClassName('user-list')[0].addEventListener('click', (e)=> { 
               try{
                     this.actions[e.target.name](e)

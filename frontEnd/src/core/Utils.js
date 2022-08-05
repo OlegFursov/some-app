@@ -1,4 +1,4 @@
-import {parseRequestURL} from './helper'
+import {parseRequestURL} from '../helper/helper'
 
 export default class Utils{
      constructor(){

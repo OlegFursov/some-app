@@ -31,5 +31,12 @@ export class ValidateForm {
               
           })
       }
+
+      checkSameTypeFields (findSameTypeFields, removeClassToField, addClassToField){ 
+          const sameInputs = findSameTypeFields(this.controls);
+          sameInputs[0].field.value == sameInputs[1].field.value ?
+          sameInputs.forEach(input => removeClassToField(input.field, input.errorStyle)):
+          sameInputs.forEach(input => addClassToField(input.field, input.errorStyle));
+     }
     
 }

@@ -53,15 +53,7 @@ export const setHTMLforModal = (item) => {
           `
 }
 
-export const setButtonToModal = () => {
-     // return `
-     //      <button name="confirm" >Confirm</button>
-     //      <button name="edit" >Edit</button>
-     //      `
-}
 
-
-{/*  */}
 
 
 

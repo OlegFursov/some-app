@@ -1,14 +1,13 @@
 
 
 
-
-export const stateLogin = {
+export const stateLoginPage = {
      'login': '',
      'password1': '',
     
 } 
 
-export const stateRegistration ={
+export const stateRegistrationPage ={
      'name': 'Full name',
      'login': 'Login',
      'gender': 'With out.png',
@@ -19,6 +18,9 @@ export const stateRegistration ={
      'id': ''
      
 }
+
+export const MAX_VALUE_ID = 1e7;
+export const MIN_VALUE_ID = 0;
 
 
 

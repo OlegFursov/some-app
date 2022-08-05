@@ -1,4 +1,4 @@
-import { pattern } from "../../helper/pattern"
+import { pattern } from "../../config/config-pattern"
 
 export const inputRegistrationForm = [           
      {
