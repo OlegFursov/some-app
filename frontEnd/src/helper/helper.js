@@ -1,4 +1,4 @@
-import { Routes } from "../index";
+import { Routes } from "../routers/Routers";
 
 export const parseRequestURL = () =>{ 
      const request = {resorse : location.hash.replace(/[^a-zA-Z]/g, '')};
@@ -33,8 +33,8 @@ export const addPhoneNumberPatter = (phoneNumber) =>{
      `+${number.slice(0,3)} ${number.slice(3,5)} ${number.slice(5,8)} ${number.slice(8,10)} ${number.slice(10,12)}`;  
 }
 
-export const changeLocalHash = (numPage) =>{
-     location.hash = `#/${Routes[numPage].hash}`
+export const setHash = (hash) =>{
+     location.hash = `#/${hash}`
 } 
 
 export const getAttributId = (id) =>{

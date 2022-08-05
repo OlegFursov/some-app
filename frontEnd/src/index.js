@@ -1,20 +1,10 @@
 import { parseRequestURL}  from './helper/helper.js';
-import { changeScheme } from './config/changeScheme.js';
-import RegisrForm from './components/registrationPage/RegistrForm.js';
-import LoginRender from './components/loginPage/LoginRender.js';
-import Error from './components/error/Error.js';
-import UserList from './components/userList/UserList.js';
-import NextPage from './components/nextPage/nextPage.js';
-
+import { changeScheme } from './config/config-change-scheme.js';
+import { Routes } from './routers/Routers';
 
 
 //!global const
-export const Routes =[
-     {hash: 'loginPage', class: LoginRender, pageLogin: 0},
-     {hash: 'regForm', class: RegisrForm, pageRegistrForm: 1},
-     {hash: 'nextPage', class: NextPage, pageNextPage: 2},
-     {hash: '', class: UserList, pageUserList: 3},
-]
+
 
 window.addEventListener('DOMContentLoaded', () => {
      //* const
@@ -22,12 +12,11 @@ window.addEventListener('DOMContentLoaded', () => {
      
      function router(){
           const parseURL = `${parseRequestURL().resorse || ''}`;
-          const Url = Routes.find(e => e.hash === parseURL);
-          const page = Url ? new Url.class: new Error();
+          const Url = Routes().find(e => e.hash === parseURL);
+          const page = Url ? new Url.class : new Routes().find(router => router.hash === 'error' );
           page.render().then(html => {
                root.innerHTML = html;
                page.afterRender();  
-
           })
      }
      
