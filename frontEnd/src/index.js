@@ -1,6 +1,6 @@
 import { parseRequestURL}  from './helper/helper.js';
 import { changeScheme } from './config/config-change-scheme.js';
-import { Routes } from './routers/Routers';
+import { Routes } from './core/Routers';
 
 
 //!global const

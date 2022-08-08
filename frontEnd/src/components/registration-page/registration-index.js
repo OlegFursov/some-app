@@ -2,7 +2,7 @@ import  html from "./registration-page.html";
 import css from "../../style/style.css";
 import { ValidateForm } from "../../core/ValidateForm";
 import { stateRegistrationPage} from "../../constant/constants";
-import { addPhoneNumberPatter, setHash, findSameTypeFields, addClassToField, removeClassToField } from "../../helper/helper";
+import { addPhoneNumberPatter, setRoutesHash, findSameTypeFields, addClassToField, removeClassToField } from "../../helper/helper";
 import    Components  from "../../core/Component";
 import { inputRegistrationForm } from "./registration-config";
 import Support from "../../core/Support";
@@ -49,7 +49,7 @@ export default class RegistrationPage extends Components {
                     this.support.setIdToData(stateRegistrationPage);
                     this.support.setDataToLocalStorage(stateRegistrationPage);
                     alert('profile has been created successful')
-                    setHash('')
+                    setRoutesHash('')
                }   
           }
      }

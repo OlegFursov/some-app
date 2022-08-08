@@ -5,7 +5,7 @@ import { ValidateForm } from "../../core/ValidateForm";
 import { stateLoginPage} from "../../constant/constants";
 import Components from "../../core/Component";
 import Support from "../../core/Support";
-import { setHash } from "../../helper/helper";
+import { setRoutesHash } from "../../helper/helper";
 
 export default class LoginPage extends Components{
      constructor(){
@@ -30,7 +30,7 @@ export default class LoginPage extends Components{
      }
 
      checkIsAuthorized(){
-          return this.isAuthorized() ? setHash('') : alert ('Please create account!')
+          return this.isAuthorized() ? setRoutesHash('') : alert ('Please create account!')
       }
 
      
