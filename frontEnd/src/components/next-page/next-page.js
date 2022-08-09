@@ -1,16 +1,26 @@
-export default class NextPage{
+import Components from "../../core/Component";
+import html from "./next-page.html";
+import style from "./style.css";
+
+
+
+export default class NextPage extends Components{
      constructor(){
-
+          super(html)
+          
+         
      }
 
-     render(){
-          return new Promise(res => {
-               res(`
-               <section>
-                    <h1 class="next">Your account has been create Successful !!! :)</h1>
-                    <a href="#/regForm">Back</a>
-               </section>`)
-          })
+     afterRender(){
+          this.handleChange()
      }
-     afterRender(){}
+   
+      handleChange()  {
+          document.getElementsByClassName('next-page_squer')[0].addEventListener('click', (e) => {
+               e.target.classList.toggle('toggel')
+          }) 
+     }
+
 }
+
+     

@@ -1,7 +1,7 @@
 import Components from "../../core/Component";
 import listPage from "./list-page.html";
 import style from "./list-style.css";
-import Support from "../../core/Support";
+import Adapter from "../../core/Adapter";
 import { setHTML, setHTMLforModal} from "./list-config";
 import Modal from "../../core/Modal";
 import { getAttributId, findItemToList, filterList, addClassToField, installText} from "../../helper/helper";
@@ -15,13 +15,13 @@ export default class ListPage extends Components{
           super(listPage)
           this.key = 'User'
           this.acsessability = true;
-          this.support = new Support(this.key);
+          this.adapter = new Adapter(this.key);
           this.login = new LoginPage();
           this.isAuthorized = this.login.isAuthorized();
           //!actions
           this.actions ={
                view: (e)=>{
-                    this.setUserObject(findItemToList(getAttributId(e.target.id), this.support.data));
+                    this.setUserObject(findItemToList(getAttributId(e.target.id), this.adapter.data));
                     this.setAcsessability();
                     this.modal._showModal();
                     this.setButtonAtModal();
@@ -44,7 +44,7 @@ export default class ListPage extends Components{
                confirm: ()=> {
                     this.confirmChangeInfo();
                     this.renderUserList();
-                    this.support.setDataToLocalStorage(this.support.data);
+                    this.adapter.setDataToLocalStorage(this.adapter.data);
                     this.modal._hiddenModal();
                }        
           } 
@@ -88,7 +88,7 @@ export default class ListPage extends Components{
      renderUserList(){
           this.elements.message.innerText = this.setMessageText() ;
           this.elements.link.innerText = this.setLogButtonText();
-          this.elements.table.innerHTML = setHTML(this.support.data)
+          this.elements.table.innerHTML = setHTML(this.adapter.data)
      }
 
 
@@ -103,11 +103,11 @@ export default class ListPage extends Components{
      }
      
      setMessageText(){
-          return this.support.data.length ? installText(`User list has ${this.support.data.length} items`) :installText('User list is empty, click on Create account')
+          return this.adapter.data.length ? installText(`User list has ${this.adapter.data.length} items`) :installText('User list is empty, click on Create account')
      }
 
      setUserList(dataBase){
-          this.support.data = filterList(this.users.id, dataBase);
+          this.adapter.data = filterList(this.users.id, dataBase);
      } 
 
      setButtonAtModal(){
@@ -125,8 +125,8 @@ export default class ListPage extends Components{
      }
 
      removeDatafromList(id){
-          this.support.data = filterList(id, this.support.data);
-          return this.support.data;
+          this.adapter.data = filterList(id, this.adapter.data);
+          return this.adapter.data;
      }
 
      confirmChangeInfo(){

@@ -9,7 +9,7 @@ export const setHTML = (data) => {
                          </div>
                          <div class="user-block-btn">
                               <button id="user-delete ${item.id}"  name="delete">Delete</button>
-                              <button id="user-view ${item.id}" name="view">View</button>
+                              <button autofocus id="user-view ${item.id}" name="view">View</button>
                          </div>
                     </div>
                </td>

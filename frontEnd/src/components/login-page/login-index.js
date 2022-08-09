@@ -4,7 +4,7 @@ import { inputsLoginForm } from "./login-config";
 import { ValidateForm } from "../../core/ValidateForm";
 import { stateLoginPage} from "../../constant/constants";
 import Components from "../../core/Component";
-import Support from "../../core/Support";
+import Adapter from "../../core/Adapter";
 import { setRoutesHash } from "../../helper/helper";
 
 export default class LoginPage extends Components{
@@ -12,7 +12,7 @@ export default class LoginPage extends Components{
      super(html)
      this.key = 'User'
      this.form;
-     this.support = new Support(this.key);
+     this.adapter = new Adapter(this.key);
 
      }
 
@@ -26,7 +26,7 @@ export default class LoginPage extends Components{
      }
 
      isAuthorized(){
-          return this.support.data.find(element => element.password1 === stateLoginPage.password1 && element.login === stateLoginPage.login);
+          return this.adapter.data.find(element => element.password1 === stateLoginPage.password1 && element.login === stateLoginPage.login);
      }
 
      checkIsAuthorized(){

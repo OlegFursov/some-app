@@ -10,6 +10,7 @@ export const Routes = ()=>{
           {hash: 'regForm', class: RegistrationPage},
           {hash: 'nextPage', class: NextPage},
           {hash: '', class: ListPage},
-          {hash: 'error', class: Error}
+          {hash: 'error', class: Error},
+          {hash: 'nxpage', class: NextPage}
      ]
 }

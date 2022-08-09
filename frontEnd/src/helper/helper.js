@@ -50,3 +50,7 @@ export const filterList = (id, list) => {
 export const installText = (text) => {
      return text;
 }
+
+export const manageToKeybord = (collectins, index) =>{
+   return collectins[index].focus();
+}
