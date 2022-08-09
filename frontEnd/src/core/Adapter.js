@@ -1,7 +1,7 @@
 import { Routes } from "../index";
 import { MAX_VALUE_ID, MIN_VALUE_ID } from "../constant/constants";
 
-export default class Support {
+export default class Adapter {
      constructor(...argument){
         const [key]= argument;
           this.key = key;

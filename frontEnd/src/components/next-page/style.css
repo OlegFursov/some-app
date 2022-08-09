@@ -1,0 +1,66 @@
+
+.next-page{
+     margin: 100px auto ;
+     
+     background: #000;
+
+}
+
+.next-page_animation{
+     position: relative;
+     animation-name: animate-next_page;
+     animation-duration: 1s ;
+     animation-timing-function:  ease-out;
+    
+     
+}
+
+.next-page_block{
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex-direction: column;
+
+
+}
+
+
+.next-page_squer{
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 5%;
+}
+button{
+  padding: 5px 40px;
+
+}
+
+
+.toggel{
+  background-color: #fff;
+ box-shadow: 5px 5px 51px 5px #fff;
+}
+
+@keyframes animate-next_page {
+     from {
+          transform: translate3d(-100%, 0, 0) skewX(30deg);
+          opacity: 0;
+        }
+      
+        60% {
+          transform: skewX(20deg);
+          opacitX: 1;
+        }
+      
+        80% {
+          transform: skewX(-15deg);
+        }
+      
+        to {
+          transform: translate3d(0, 0, 0);
+        }
+      
+   }
